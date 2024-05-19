@@ -1,8 +1,5 @@
-// Package imports:
 import 'package:equatable/equatable.dart';
-
-// Project imports:
-import '../utils/errors/errors.dart';
+import 'package:maids/core/errors/errors.dart';
 
 class Result<Data> extends Equatable {
   final Data? data;

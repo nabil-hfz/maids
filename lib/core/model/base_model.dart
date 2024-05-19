@@ -1,7 +1,8 @@
 // Project imports:
+import 'package:equatable/equatable.dart';
 import 'package:maids/core/entity/base_entity.dart';
 
-abstract class BaseModel<T extends BaseEntity> {
+abstract class BaseModel<T extends BaseEntity> extends Equatable {
   const BaseModel();
 
   T toEntity();

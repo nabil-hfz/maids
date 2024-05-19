@@ -1,4 +1,4 @@
-import 'package:maids/core/utils/errors/types/msg_custom_error.dart';
+import 'package:maids/core/errors/types/msg_custom_error.dart';
 
 import 'base_error.dart';
 

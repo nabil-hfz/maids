@@ -1,5 +1,5 @@
 import 'package:maids/core/bloc/base/states/base_state.dart';
-import 'package:maids/core/utils/errors/errors.dart';
+import 'package:maids/core/errors/types/base_error.dart';
 
 /// This is the failure state for all blocs in the application as
 /// a standard state extends the base state class [BaseState].
