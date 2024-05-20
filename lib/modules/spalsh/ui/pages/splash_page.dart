@@ -11,12 +11,11 @@ import 'package:maids/core/generated_files/assets/assets.gen.dart';
 import 'package:maids/core/managers/navigation/nav_routes.dart';
 import 'package:maids/core/managers/theme/app_them_manager.dart';
 import 'package:maids/core/utils/device_utils.dart';
-import 'package:maids/core/widgets/general/salony_app_bar.dart';
 import 'package:maids/core/widgets/images/app_image_widget.dart';
 import 'package:maids/modules/auth/domain/blocs/auth_cubit.dart';
 
 class SplashPage extends StatefulWidget {
-  const SplashPage({Key? key}) : super(key: key);
+  const SplashPage({super.key});
 
   @override
   State<StatefulWidget> createState() => _SplashPageState();
@@ -71,7 +70,7 @@ class _SplashPageState extends State<SplashPage> {
       builder: (context, state) {
         return Scaffold(
           backgroundColor: _themeManager.appColors.scaffoldBgColor,
-          appBar: SalonyAppBar(
+          appBar: AppBar(
             automaticallyImplyLeading: false,
             backgroundColor: _themeManager.appColors.splashAppBarColor,
           ),
@@ -81,7 +80,7 @@ class _SplashPageState extends State<SplashPage> {
               width: width,
               child: Center(
                 child: AppImageWidget(
-                  path: Assets.images.appLauncher.path,
+                  path: Assets.images.splashLogoPng.path,
                   width: 160,
                   height: 160,
                 ),

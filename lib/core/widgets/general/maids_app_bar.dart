@@ -11,8 +11,8 @@ import 'package:maids/core/widgets/icons/app_back_icon_widget.dart';
 // Package imports:
 import 'package:provider/provider.dart';
 
-class SalonyAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const SalonyAppBar({
+class MaidsAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const MaidsAppBar({
     super.key,
     this.title,
     this.actions,

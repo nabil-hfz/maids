@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:maids/core/managers/localization/app_translation.dart';
 
 import 'base_validator.dart';
 
@@ -9,7 +10,8 @@ class MinLengthValidator extends BaseValidator {
 
   @override
   String getMessage(BuildContext? context) {
-    return "translate.validator_should_be_with_minimum_length_of_characters(minLength)";
+    return translate
+        .validator_should_be_with_minimum_length_of_characters(minLength);
   }
 
   @override
@@ -25,7 +27,8 @@ class MaxLengthValidator extends BaseValidator {
 
   @override
   String getMessage(BuildContext? context) {
-    return "translate.validator_should_be_with_maximum_length_of_characters(maxLength)";
+    return translate
+        .validator_should_be_with_maximum_length_of_characters(maxLength);
   }
 
   @override

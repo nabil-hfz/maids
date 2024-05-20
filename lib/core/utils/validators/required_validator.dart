@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:maids/core/managers/localization/app_translation.dart';
 import 'package:maids/core/utils/validators/base_validator.dart';
 
 class RequiredValidator extends BaseValidator {
@@ -6,7 +7,7 @@ class RequiredValidator extends BaseValidator {
 
   @override
   String getMessage(BuildContext? context) {
-    return "";
+    return translate.required;
   }
 
   @override

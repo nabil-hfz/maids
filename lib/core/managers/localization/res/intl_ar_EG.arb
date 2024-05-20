@@ -1,0 +1,94 @@
+{
+  "@@locale": "ar_EG",
+  "@ @locale": "ar",
+  "start_error_strings": "================ بداية سلاسل الأخطاء =================",
+  "un_authorized_error": "خطأ غير مصرح به",
+  "connection_error": "خطأ في الاتصال",
+  "user_cancel_error": "تم الإلغاء بواسطة المستخدم",
+  "unknown_error": "خطأ غير معروف",
+  "error_internal_server": "خطأ في الخادم الداخلي",
+  "something_went_wrong_check_connection": "حدث خطأ ما ، يرجى التحقق من اتصال الإنترنت الخاص بك والمحاولة مرة أخرى",
+  "something_went_wrong_please_try_again": "حدث خطأ ما ، يرجى المحاولة مرة أخرى.",
+  "error_unexpected": "حدث خطأ غير متوقع",
+  "dio_cancel_error": "تم إلغاء طلب إلى خادم API",
+  "dio_connection_timeout_error": "انتهت مهلة الاتصال مع خادم API",
+  "dio_receive_connection_timeout_error": "انتهت مهلة الاستلام في الاتصال مع خادم API",
+  "dio_send_timeout_to_the_server": "انتهت مهلة الإرسال في الاتصال مع خادم API",
+  "dio_bad_request_error": "طلب سيء!",
+  "dio_not_found_error": "خطأ في العثور!",
+  "validator_invalid_email": "بريد إلكتروني غير صالح!",
+  "validator_invalid_url": "رابط غير صالح!",
+  "validator_it_does_not_match": "لا يتطابق",
+  "validator_should_be_with_minimum_length_of_characters": "يجب أن يكون هذا الحقل طوله الأدنى {minLength} من الأحرف",
+  "@validator_should_be_with_minimum_length_of_characters": {
+    "description": "هذا هو نص لمعيار طول النص الأدنى",
+    "placeholders": {
+      "minLength": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  },
+  "validator_should_be_with_maximum_length_of_characters": "يجب أن يكون هذا الحقل طوله الأقصى {minLength} من الأحرف",
+  "@validator_should_be_with_maximum_length_of_characters": {
+    "description": "هذا هو نص لمعيار طول النص الأقصى",
+    "placeholders": {
+      "minLength": {
+        "type": "int",
+        "example": "50"
+      }
+    }
+  },
+  "validator_should_be_with_range_of": "يجب أن يكون هذا القيمة في النطاق ({min}, {max})",
+  "validator_this_field_is_required": "هذا الحقل مطلوب",
+  "validator_this_field_is_required_gsm": "GSM مطلوب",
+  "validator_this_end_should_be_after_starting_date": "يجب أن يكون تاريخ الانتهاء بعد تاريخ البدء",
+  "end_error_strings": "========================================================",
+  "language": "اللغة",
+  "languages": "اللغات",
+  "change_language": "تغيير اللغة",
+  "done": "تم",
+  "start": "بداية",
+  "reset": "إعادة تعيين",
+  "cancel": "إلغاء",
+  "log_in": "تسجيل الدخول",
+  "email": "البريد الإلكتروني",
+  "user_email": "بريد المستخدم",
+  "enter_your_email": "أدخل بريدك الإلكتروني",
+  "change_password": "تغيير كلمة المرور",
+  "notifications_settings": "إعدادات الإشعارات",
+  "dark_mode": "الوضع الداكن",
+  "current_password": "كلمة المرور الحالية",
+  "enter_your_current_password": "أدخل كلمة المرور الحالية",
+  "password": "كلمة المرور",
+  "enter_your_password": "أدخل كلمة المرور الخاصة بك",
+  "confirm_password": "تأكيد كلمة المرور",
+  "enter_your_password_again": "أدخل كلمة المرور مرة أخرى",
+  "confirm": "تأكيد",
+  "processing": "جارٍ المعالجة",
+  "remember_me": "تذكرني للمرة القادمة",
+  "tap_again_to_eit": "اضغط مرة أخرى للخروج!",
+  "new_account": "حساب جديد؟",
+  "welcome": "مرحبًا {username}",
+  "@welcome": {
+    "description": "هذا هو نص الترحيب عند تسجيل الدخول للمستخدم",
+    "placeholders": {
+      "username": {
+        "type": "String",
+        "example": "مرحبًا مايكل"
+      }
+    }
+  },
+  "or_continue_with": "أو استمر باستخدام",
+  "privacy_policy": "سياسة الخصوصية",
+  "whoops": "عفوًا!",
+  "try_again": "حاول مرة أخرى",
+  "home": "الصفحة الرئيسية",
+  "optional": "خياري",
+  "required": "مطلوب",
+  "log_out": "تسجيل الخروج",
+  "logout_message": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+  "user_name": "اسم المستخدم",
+  "enter_your_user_name": "أدخل اسم المستخدم الخاص بك",
+  "err_not_valid_username_or_password": "اسم المستخدم أو كلمة المرور غير صالحة."
+}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:maids/core/managers/localization/app_translation.dart';
 
 import 'base_validator.dart';
 
@@ -9,7 +10,7 @@ class MatchValidator extends BaseValidator {
 
   @override
   String getMessage(BuildContext? context) {
-    return "";
+    return translate.validator_it_does_not_match;
   }
 
   @override

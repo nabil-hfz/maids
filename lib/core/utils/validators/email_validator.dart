@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:maids/core/managers/localization/app_translation.dart';
 
 import 'base_validator.dart';
 
 class EmailValidator extends BaseValidator {
   @override
   String getMessage(BuildContext? context) {
-    return "";
+    return translate.required;
   }
 
   @override

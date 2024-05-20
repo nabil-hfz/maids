@@ -1,0 +1,94 @@
+{
+  "@@locale": "en",
+  "start_error_strings": "=============== Start Error Strings ==================",
+  "un_authorized_error": "Unauthorized Error",
+  "connection_error": "Connection Error",
+  "user_cancel_error": "Canceled by the user",
+  "unknown_error": "UnKnown error",
+  "error_internal_server": "Internal server error",
+  "something_went_wrong_check_connection": "Something went wrong, please check your internet connection and try again",
+  "something_went_wrong_please_try_again": "Something went wrong,\n Please try again.",
+  "error_unexpected": "Unexpected Error happened",
+  "dio_cancel_error": "Request to API server was cancelled",
+  "dio_connection_timeout_error": "Connection timeout with API server",
+  "dio_receive_connection_timeout_error": "Receive timeout in connection with API server",
+  "dio_send_timeout_to_the_server": "Send timeout in connection with API server",
+  "dio_bad_request_error": "Bad Request!",
+  "dio_not_found_error": "Not found error!",
+  "validator_invalid_email": "Invalid email!",
+  "validator_invalid_url": "Invalid url!",
+  "validator_it_does_not_match": "It does not match",
+  "validator_should_be_with_minimum_length_of_characters": "This field should minimum length of {minLength} characters",
+  "@validator_should_be_with_minimum_length_of_characters": {
+    "description": "This is the text for the text min length validator",
+    "placeholders": {
+      "minLength": {
+        "type": "int",
+        "example": "3"
+      }
+    }
+  },
+  "validator_should_be_with_maximum_length_of_characters": "This field should maximum length of {minLength} characters",
+  "@validator_should_be_with_maximum_length_of_characters": {
+    "description": "This is the text for the text max length validator",
+    "placeholders": {
+      "minLength": {
+        "type": "int",
+        "example": "50"
+      }
+    }
+  },
+  "validator_should_be_with_range_of": "This value should should be in range of ({min}, {max})",
+  "validator_this_field_is_required": "This field is required",
+  "validator_this_field_is_required_gsm": "The GSM is required",
+  "validator_this_end_should_be_after_starting_date": "End date should be after starting date",
+  "end_error_strings": "========================================================",
+  "language": "Language",
+  "languages": "Languages",
+  "change_language": "Change Language",
+  "done": "Done",
+  "start": "Start",
+  "reset": "Reset",
+  "cancel": "Cancel",
+  "log_in": "Log In",
+  "email": "Email",
+  "user_email": "User email",
+  "enter_your_email": "Enter your email",
+  "change_password": "Change password",
+  "notifications_settings": "Notifications settings",
+  "dark_mode": "Dark mode",
+  "current_password": "Current password",
+  "enter_your_current_password": "Enter your current password",
+  "password": "Password",
+  "enter_your_password": "Enter your password",
+  "confirm_password": "Confirm password",
+  "enter_your_password_again": "Enter your password again",
+  "confirm": "Confirm",
+  "processing": "Processing",
+  "remember_me": "Remember me",
+  "tap_again_to_eit": "Tap again to exit!",
+  "new_account": "New account?",
+  "welcome": "Welcome {username}",
+  "@welcome": {
+    "description": "This is a greeting text when user logs in",
+    "placeholders": {
+      "username": {
+        "type": "String",
+        "example": "Welcome Michale"
+      }
+    }
+  },
+  "or_continue_with": "Or continue with",
+  "privacy_policy": "Privacy Policy",
+  "whoops": "Whoops!",
+  "try_again": "Try again",
+  "home": "Home",
+  "optional": "Optional",
+  "required": "Required",
+  "log_out": "Log out",
+  "logout_message": "Are you sure you want to log out?",
+  "user_name": "Username",
+
+  "enter_your_user_name": "Enter your username",
+  "err_not_valid_username_or_password": "Username or password is not valid."
+}

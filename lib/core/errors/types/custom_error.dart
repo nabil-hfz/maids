@@ -6,35 +6,13 @@ class CustomError extends BaseError {
   const CustomError._({super.message});
 
   factory CustomError.specific({String? message}) {
-    if (message == MSGCustomError.msgPasswordNotExists) {
-      return const PasswordNotExistsError();
-    } else if (message == MSGCustomError.msgEmailOrPhoneRequired) {
-      return const EmailOrPhoneRequiredError();
-    } else if (message == MSGCustomError.msgEmailAlreadyExist) {
-      return const EmailAlreadyExistError();
-    } else if (message == MSGCustomError.msgPhoneNumberAlreadyExist) {
-      return const PhoneNumberAlreadyExistError();
-    } else if (message == MSGCustomError.msgCityNotExists) {
-      return const CityNotExistsError();
-    } else if (message == MSGCustomError.msgCustomerTypesRequired) {
-      return const CustomerTypesRequiredError();
-    } else if (message == MSGCustomError.msgNoCodeWasRegistered) {
-      return const NoCodeWasRegisteredError();
-    } else if (message == MSGCustomError.msgCodeMaxCount) {
-      return const CodeMaxCountError();
-    } else if (message == MSGCustomError.msgNotValidUser) {
-      return const NotValidUserError();
-    } else if (message == MSGCustomError.msgNotValidUserNameOrPassword) {
+    print('message == MSGCustomError.msgNotValidUserNameOrPassword '
+        'is ${message == MSGCustomError.msgNotValidUserNameOrPassword}');
+    if (message == MSGCustomError.msgNotValidUserNameOrPassword) {
       return const NotValidUserNameOrPasswordError();
-    } else if (message == MSGCustomError.msgNotEmailConfirmed) {
-      return const EmailNotConfirmedError();
-    } else if (message == MSGCustomError.msgTokenError) {
-      return const TokenError();
-    } else if (message == MSGCustomError.msgSalonNotExist) {
-      return const SalonNotFoundError();
-    } else if (message == MSGCustomError.msgNotValidCode) {
-      return const NotValidCodeError();
     }
+    //
+
     return CustomError._(message: message);
   }
 
@@ -152,12 +130,12 @@ class TokenError extends CustomError {
   }
 }
 
-class SalonNotFoundError extends CustomError {
-  const SalonNotFoundError({super.message}) : super._();
+class ProfileNotFoundError extends CustomError {
+  const ProfileNotFoundError({super.message}) : super._();
 
   @override
   String toString() {
-    return "$SalonNotFoundError(message: $message, statusCode: $statusCode)";
+    return "$ProfileNotFoundError(message: $message, statusCode: $statusCode)";
   }
 }
 

@@ -11,11 +11,16 @@ import 'package:maids/core/managers/localization/app_language.dart';
 import 'package:maids/core/utils/logger.dart';
 import 'package:maids/modules/my_app.dart';
 
-bool isProduction = true;
+bool isProduction = false;
 bool isRelease = true;
 
 Future<void> main() async {
-  AppEndpoints.baseUrl = const String.fromEnvironment('BASE_URL');
+  const baseUrl = String.fromEnvironment('BASE_URL');
+  if (baseUrl.isNotEmpty) {
+    AppEndpoints.baseUrl = baseUrl;
+  } else {
+    // throw Error.safeToString("BASE_URL is null");
+  }
   runZonedGuarded<Future<void>>(() async {
     WidgetsFlutterBinding.ensureInitialized();
     await configureDependencies();
@@ -51,3 +56,6 @@ Future<void> setPreferredOrientations() {
     DeviceOrientation.portraitUp,
   ]);
 }
+
+// "username":"atuny0",
+// "password":"9uQFF1Lh",

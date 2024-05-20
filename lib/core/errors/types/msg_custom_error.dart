@@ -8,9 +8,8 @@ abstract class MSGCustomError {
   static const msgNoCodeWasRegistered = 'MSGNoCodeWasRegistered';
   static const msgCodeMaxCount = 'MSGCodeMaxCount';
   static const msgNotValidUser = 'MSGNotValidUser';
-  static const msgNotValidUserNameOrPassword = 'MSGNotValidUserNameOrPassword';
+  static const msgNotValidUserNameOrPassword = 'Invalid credentials';
   static const msgNotEmailConfirmed = 'MSGNotEmailConfirmed';
   static const msgTokenError = 'MSGTokenError';
-  static const msgSalonNotExist = 'MSGSalonNotExist';
   static const msgNotValidCode = 'MSGNotValidCode';
 }

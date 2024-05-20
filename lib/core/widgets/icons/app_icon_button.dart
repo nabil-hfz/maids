@@ -1,11 +1,6 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
-import 'package:maids/core/constants/app_icon_size.dart';
 import 'package:maids/core/constants/app_radius.dart';
-import 'package:maids/core/generated_files/assets/assets.gen.dart';
-import 'package:maids/core/managers/theme/app_them_manager.dart';
-import 'package:maids/core/widgets/images/app_image_widget.dart';
-import 'package:provider/provider.dart';
 
 class AppIconButton extends StatelessWidget {
   const AppIconButton({
