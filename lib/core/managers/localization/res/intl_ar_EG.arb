@@ -90,5 +90,16 @@
   "logout_message": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
   "user_name": "اسم المستخدم",
   "enter_your_user_name": "أدخل اسم المستخدم الخاص بك",
-  "err_not_valid_username_or_password": "اسم المستخدم أو كلمة المرور غير صالحة."
+  "err_not_valid_username_or_password": "اسم المستخدم أو كلمة المرور غير صالحة.",
+  "more": "مزيد",
+  "todos": "Todos",
+  "deleting": "Deleting",
+  "min_characters_count": "الحد الأدنى {count} حروف",
+  "todo": "Todo",
+  "description": "description",
+  "idle_loading_text": "تحرير للتحميل",
+  "loading_text": "جارٍ التحميل...",
+  "no_more_data_text": "لا توجد مزيد من البيانات",
+  "load_failed_text": "فشل في التحميل",
+  "can_loading_text": "يمكن التحميل"
 }

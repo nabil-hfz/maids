@@ -17,17 +17,24 @@ class $AssetsIconsGen {
   /// File path: assets/icons/arrow_back.svg
   SvgGenImage get arrowBack => const SvgGenImage('assets/icons/arrow_back.svg');
 
+  /// File path: assets/icons/home.svg
+  SvgGenImage get home => const SvgGenImage('assets/icons/home.svg');
+
   /// File path: assets/icons/invisible.svg
   SvgGenImage get invisible => const SvgGenImage('assets/icons/invisible.svg');
 
   /// File path: assets/icons/logout.svg
   SvgGenImage get logout => const SvgGenImage('assets/icons/logout.svg');
 
+  /// File path: assets/icons/more.svg
+  SvgGenImage get more => const SvgGenImage('assets/icons/more.svg');
+
   /// File path: assets/icons/visible.svg
   SvgGenImage get visible => const SvgGenImage('assets/icons/visible.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [arrowBack, invisible, logout, visible];
+  List<SvgGenImage> get values =>
+      [arrowBack, home, invisible, logout, more, visible];
 }
 
 class $AssetsImagesGen {

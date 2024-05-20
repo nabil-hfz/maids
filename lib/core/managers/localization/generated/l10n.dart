@@ -679,6 +679,176 @@ class Translations {
       args: [],
     );
   }
+
+  /// `More`
+  String get more {
+    return Intl.message(
+      'More',
+      name: 'more',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Todos`
+  String get todos {
+    return Intl.message(
+      'Todos',
+      name: 'todos',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Deleting`
+  String get deleting {
+    return Intl.message(
+      'Deleting',
+      name: 'deleting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Min {count} characters`
+  String min_characters_count(Object count) {
+    return Intl.message(
+      'Min $count characters',
+      name: 'min_characters_count',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// `Add New Todo`
+  String get add_new_todo {
+    return Intl.message(
+      'Add New Todo',
+      name: 'add_new_todo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Todo`
+  String get edit_todo {
+    return Intl.message(
+      'Edit Todo',
+      name: 'edit_todo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Added successfully`
+  String get added_successfully {
+    return Intl.message(
+      'Added successfully',
+      name: 'added_successfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Updated successfully`
+  String get updated_successfully {
+    return Intl.message(
+      'Updated successfully',
+      name: 'updated_successfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Todo`
+  String get todo {
+    return Intl.message(
+      'Todo',
+      name: 'todo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `description`
+  String get description {
+    return Intl.message(
+      'description',
+      name: 'description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add`
+  String get add {
+    return Intl.message(
+      'Add',
+      name: 'add',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update`
+  String get update {
+    return Intl.message(
+      'Update',
+      name: 'update',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Eliberați pentru a încărca`
+  String get idle_loading_text {
+    return Intl.message(
+      'Eliberați pentru a încărca',
+      name: 'idle_loading_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Se încarcă...`
+  String get loading_text {
+    return Intl.message(
+      'Se încarcă...',
+      name: 'loading_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Niciun alt date disponibil`
+  String get no_more_data_text {
+    return Intl.message(
+      'Niciun alt date disponibil',
+      name: 'no_more_data_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Încărcarea a eșuat`
+  String get load_failed_text {
+    return Intl.message(
+      'Încărcarea a eșuat',
+      name: 'load_failed_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Poate încărca`
+  String get can_loading_text {
+    return Intl.message(
+      'Poate încărca',
+      name: 'can_loading_text',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<Translations> {

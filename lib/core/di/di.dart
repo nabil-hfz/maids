@@ -7,11 +7,11 @@ import 'di.config.dart';
 final getIt = GetIt.instance;
 
 @InjectableInit(
-  initializerName: 'init', // default
-  preferRelativeImports: true, // default
-  asExtension: false, // default
+  initializerName: r'init',
+  preferRelativeImports: true,
+  asExtension: false,
 )
-Future<GetIt> configureDependencies() async => await init(getIt);
+Future<void> configureDependencies() => init(getIt);
 
 Dep findDep<Dep extends Object>({String? instanceName}) {
   if (instanceName?.isNotEmpty ?? false) getIt<Dep>(instanceName: instanceName);

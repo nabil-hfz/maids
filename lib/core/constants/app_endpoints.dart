@@ -11,14 +11,14 @@ class AppEndpoints {
   // Todos API
   static const String _todo = "todos";
 
-  static const String getAllTodos = _todo;
+  static const String getTodosList = _todo;
 
-  static String getTodoDetails(String id) => "$_todo/$id";
-  static const String addTodo = "$_todo/add";
+  static String getTodoDetails(int id) => "$_todo/$id";
+  static const String createTodo = "$_todo/add";
 
-  static String editTodo(String id) => "$_todo/$id";
+  static String updateTodo(int id) => "$_todo/$id";
 
-  static String deleteTodo(String id) => "$_todo/$id";
+  static String deleteTodo(int id) => "$_todo/$id";
 
   static const int receiveTimeout = 15000;
 

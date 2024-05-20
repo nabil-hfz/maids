@@ -185,6 +185,11 @@ class AppUtils {
       ),
     );
   }
+
+  static unFocus(BuildContext context) {
+    var focus = FocusScope.of(context);
+    if (focus.hasFocus) focus.unfocus();
+  }
 }
 
 AppUtils appUtils = AppUtils.instance;

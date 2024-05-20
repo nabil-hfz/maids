@@ -20,19 +20,23 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ar_EG';
 
-  static String m0(minLength) =>
-      "يجب أن يكون هذا الحقل طوله الأقصى ${minLength} من الأحرف";
+  static String m0(count) => "الحد الأدنى ${count} حروف";
 
   static String m1(minLength) =>
+      "يجب أن يكون هذا الحقل طوله الأقصى ${minLength} من الأحرف";
+
+  static String m2(minLength) =>
       "يجب أن يكون هذا الحقل طوله الأدنى ${minLength} من الأحرف";
 
-  static String m2(min, max) =>
+  static String m3(min, max) =>
       "يجب أن يكون هذا القيمة في النطاق (${min}, ${max})";
 
-  static String m3(username) => "مرحبًا ${username}";
+  static String m4(username) => "مرحبًا ${username}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "can_loading_text":
+            MessageLookupByLibrary.simpleMessage("يمكن التحميل"),
         "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
         "change_language": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
         "change_password":
@@ -45,6 +49,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "current_password":
             MessageLookupByLibrary.simpleMessage("كلمة المرور الحالية"),
         "dark_mode": MessageLookupByLibrary.simpleMessage("الوضع الداكن"),
+        "deleting": MessageLookupByLibrary.simpleMessage("Deleting"),
+        "description": MessageLookupByLibrary.simpleMessage("description"),
         "dio_bad_request_error":
             MessageLookupByLibrary.simpleMessage("طلب سيء!"),
         "dio_cancel_error":
@@ -80,13 +86,22 @@ class MessageLookup extends MessageLookupByLibrary {
         "error_unexpected":
             MessageLookupByLibrary.simpleMessage("حدث خطأ غير متوقع"),
         "home": MessageLookupByLibrary.simpleMessage("الصفحة الرئيسية"),
+        "idle_loading_text":
+            MessageLookupByLibrary.simpleMessage("تحرير للتحميل"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "languages": MessageLookupByLibrary.simpleMessage("اللغات"),
+        "load_failed_text":
+            MessageLookupByLibrary.simpleMessage("فشل في التحميل"),
+        "loading_text": MessageLookupByLibrary.simpleMessage("جارٍ التحميل..."),
         "log_in": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "log_out": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "logout_message": MessageLookupByLibrary.simpleMessage(
             "هل أنت متأكد أنك تريد تسجيل الخروج؟"),
+        "min_characters_count": m0,
+        "more": MessageLookupByLibrary.simpleMessage("مزيد"),
         "new_account": MessageLookupByLibrary.simpleMessage("حساب جديد؟"),
+        "no_more_data_text":
+            MessageLookupByLibrary.simpleMessage("لا توجد مزيد من البيانات"),
         "notifications_settings":
             MessageLookupByLibrary.simpleMessage("إعدادات الإشعارات"),
         "optional": MessageLookupByLibrary.simpleMessage("خياري"),
@@ -111,6 +126,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "================ بداية سلاسل الأخطاء ================="),
         "tap_again_to_eit":
             MessageLookupByLibrary.simpleMessage("اضغط مرة أخرى للخروج!"),
+        "todo": MessageLookupByLibrary.simpleMessage("Todo"),
+        "todos": MessageLookupByLibrary.simpleMessage("Todos"),
         "try_again": MessageLookupByLibrary.simpleMessage("حاول مرة أخرى"),
         "un_authorized_error":
             MessageLookupByLibrary.simpleMessage("خطأ غير مصرح به"),
@@ -125,9 +142,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("رابط غير صالح!"),
         "validator_it_does_not_match":
             MessageLookupByLibrary.simpleMessage("لا يتطابق"),
-        "validator_should_be_with_maximum_length_of_characters": m0,
-        "validator_should_be_with_minimum_length_of_characters": m1,
-        "validator_should_be_with_range_of": m2,
+        "validator_should_be_with_maximum_length_of_characters": m1,
+        "validator_should_be_with_minimum_length_of_characters": m2,
+        "validator_should_be_with_range_of": m3,
         "validator_this_end_should_be_after_starting_date":
             MessageLookupByLibrary.simpleMessage(
                 "يجب أن يكون تاريخ الانتهاء بعد تاريخ البدء"),
@@ -135,7 +152,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("هذا الحقل مطلوب"),
         "validator_this_field_is_required_gsm":
             MessageLookupByLibrary.simpleMessage("GSM مطلوب"),
-        "welcome": m3,
+        "welcome": m4,
         "whoops": MessageLookupByLibrary.simpleMessage("عفوًا!")
       };
 }

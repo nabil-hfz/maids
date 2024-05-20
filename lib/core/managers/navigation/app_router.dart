@@ -7,7 +7,9 @@ import 'package:maids/core/managers/navigation/navigation_transition.dart';
 import 'package:maids/core/widgets/not_found_page.dart';
 import 'package:maids/main.dart';
 import 'package:maids/modules/auth/ui/pages/log_in_page.dart';
+import 'package:maids/modules/main_root/ui/pages/main_root_page.dart';
 import 'package:maids/modules/spalsh/ui/pages/splash_page.dart';
+import 'package:maids/modules/todos/ui/pages/todos_list_page.dart';
 
 final _parentKey = GlobalKey<NavigatorState>();
 
@@ -41,31 +43,31 @@ abstract class AppRouter {
         },
         // routes: [],
       ),
-      // StatefulShellRoute.indexedStack(
-      //   builder: (
-      //     BuildContext context,
-      //     GoRouterState state,
-      //     StatefulNavigationShell navigationShell,
-      //   ) {
-      //     return MainRootPage(
-      //       navigationShell: navigationShell,
-      //     );
-      //   },
-      //   branches: <StatefulShellBranch>[
-      //     StatefulShellBranch(
-      //       routes: <RouteBase>[
-      //         // GoRoute(
-      //         //   name: Routes.homePage,
-      //         //   path: Routes.homePage,
-      //         //   builder: (BuildContext context, GoRouterState state) {
-      //         //     return const CalendarPage();
-      //         //   },
-      //         //   routes: <RouteBase>[],
-      //         // ),
-      //       ],
-      //     ),
-      //   ],
-      // ),
+      StatefulShellRoute.indexedStack(
+        builder: (
+          BuildContext context,
+          GoRouterState state,
+          StatefulNavigationShell navigationShell,
+        ) {
+          return MainRootPage(
+            navigationShell: navigationShell,
+          );
+        },
+        branches: <StatefulShellBranch>[
+          StatefulShellBranch(
+            routes: <RouteBase>[
+              GoRoute(
+                name: Routes.homePage,
+                path: Routes.homePage,
+                builder: (BuildContext context, GoRouterState state) {
+                  return const TodosListPage();
+                },
+                routes: <RouteBase>[],
+              ),
+            ],
+          ),
+        ],
+      ),
     ],
 
     // redirect: _guard,

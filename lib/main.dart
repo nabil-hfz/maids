@@ -15,14 +15,15 @@ bool isProduction = false;
 bool isRelease = true;
 
 Future<void> main() async {
-  const baseUrl = String.fromEnvironment('BASE_URL');
-  if (baseUrl.isNotEmpty) {
-    AppEndpoints.baseUrl = baseUrl;
-  } else {
-    // throw Error.safeToString("BASE_URL is null");
-  }
-  runZonedGuarded<Future<void>>(() async {
+  await runZonedGuarded<Future<void>>(() async {
     WidgetsFlutterBinding.ensureInitialized();
+    const baseUrl = String.fromEnvironment('BASE_URL');
+    if (baseUrl.isNotEmpty) {
+      AppEndpoints.baseUrl = baseUrl;
+    } else {
+      // throw Error.safeToString("BASE_URL is null");
+    }
+
     await configureDependencies();
 
     EquatableConfig.stringify = kDebugMode;

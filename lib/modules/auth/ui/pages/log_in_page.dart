@@ -50,6 +50,9 @@ class _LoginPageState extends BaseAppState<LoginPage>
   void initState() {
     super.initState();
     _cubit = findDep<AuthCubit>();
+
+    setUserNameText = "atuny0";
+    setPasswordText = "9uQFF1Lh";
   }
 
   @override

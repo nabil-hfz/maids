@@ -20,19 +20,27 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
-  static String m0(minLength) =>
-      "This field should maximum length of ${minLength} characters";
+  static String m0(count) => "Min ${count} characters";
 
   static String m1(minLength) =>
+      "This field should maximum length of ${minLength} characters";
+
+  static String m2(minLength) =>
       "This field should minimum length of ${minLength} characters";
 
-  static String m2(min, max) =>
+  static String m3(min, max) =>
       "This value should should be in range of (${min}, ${max})";
 
-  static String m3(username) => "Welcome ${username}";
+  static String m4(username) => "Welcome ${username}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "add": MessageLookupByLibrary.simpleMessage("Add"),
+        "add_new_todo": MessageLookupByLibrary.simpleMessage("Add New Todo"),
+        "added_successfully":
+            MessageLookupByLibrary.simpleMessage("Added successfully"),
+        "can_loading_text":
+            MessageLookupByLibrary.simpleMessage("Poate încărca"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "change_language":
             MessageLookupByLibrary.simpleMessage("Change Language"),
@@ -46,6 +54,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "current_password":
             MessageLookupByLibrary.simpleMessage("Current password"),
         "dark_mode": MessageLookupByLibrary.simpleMessage("Dark mode"),
+        "deleting": MessageLookupByLibrary.simpleMessage("Deleting"),
+        "description": MessageLookupByLibrary.simpleMessage("description"),
         "dio_bad_request_error":
             MessageLookupByLibrary.simpleMessage("Bad Request!"),
         "dio_cancel_error": MessageLookupByLibrary.simpleMessage(
@@ -60,6 +70,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "dio_send_timeout_to_the_server": MessageLookupByLibrary.simpleMessage(
             "Send timeout in connection with API server"),
         "done": MessageLookupByLibrary.simpleMessage("Done"),
+        "edit_todo": MessageLookupByLibrary.simpleMessage("Edit Todo"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "end_error_strings": MessageLookupByLibrary.simpleMessage(
             "========================================================"),
@@ -81,13 +92,22 @@ class MessageLookup extends MessageLookupByLibrary {
         "error_unexpected":
             MessageLookupByLibrary.simpleMessage("Unexpected Error happened"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "idle_loading_text":
+            MessageLookupByLibrary.simpleMessage("Eliberați pentru a încărca"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "languages": MessageLookupByLibrary.simpleMessage("Languages"),
+        "load_failed_text":
+            MessageLookupByLibrary.simpleMessage("Încărcarea a eșuat"),
+        "loading_text": MessageLookupByLibrary.simpleMessage("Se încarcă..."),
         "log_in": MessageLookupByLibrary.simpleMessage("Log In"),
         "log_out": MessageLookupByLibrary.simpleMessage("Log out"),
         "logout_message": MessageLookupByLibrary.simpleMessage(
             "Are you sure you want to log out?"),
+        "min_characters_count": m0,
+        "more": MessageLookupByLibrary.simpleMessage("More"),
         "new_account": MessageLookupByLibrary.simpleMessage("New account?"),
+        "no_more_data_text":
+            MessageLookupByLibrary.simpleMessage("Niciun alt date disponibil"),
         "notifications_settings":
             MessageLookupByLibrary.simpleMessage("Notifications settings"),
         "optional": MessageLookupByLibrary.simpleMessage("Optional"),
@@ -111,10 +131,15 @@ class MessageLookup extends MessageLookupByLibrary {
             "=============== Start Error Strings =================="),
         "tap_again_to_eit":
             MessageLookupByLibrary.simpleMessage("Tap again to exit!"),
+        "todo": MessageLookupByLibrary.simpleMessage("Todo"),
+        "todos": MessageLookupByLibrary.simpleMessage("Todos"),
         "try_again": MessageLookupByLibrary.simpleMessage("Try again"),
         "un_authorized_error":
             MessageLookupByLibrary.simpleMessage("Unauthorized Error"),
         "unknown_error": MessageLookupByLibrary.simpleMessage("UnKnown error"),
+        "update": MessageLookupByLibrary.simpleMessage("Update"),
+        "updated_successfully":
+            MessageLookupByLibrary.simpleMessage("Updated successfully"),
         "user_cancel_error":
             MessageLookupByLibrary.simpleMessage("Canceled by the user"),
         "user_email": MessageLookupByLibrary.simpleMessage("User email"),
@@ -125,9 +150,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Invalid url!"),
         "validator_it_does_not_match":
             MessageLookupByLibrary.simpleMessage("It does not match"),
-        "validator_should_be_with_maximum_length_of_characters": m0,
-        "validator_should_be_with_minimum_length_of_characters": m1,
-        "validator_should_be_with_range_of": m2,
+        "validator_should_be_with_maximum_length_of_characters": m1,
+        "validator_should_be_with_minimum_length_of_characters": m2,
+        "validator_should_be_with_range_of": m3,
         "validator_this_end_should_be_after_starting_date":
             MessageLookupByLibrary.simpleMessage(
                 "End date should be after starting date"),
@@ -135,7 +160,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("This field is required"),
         "validator_this_field_is_required_gsm":
             MessageLookupByLibrary.simpleMessage("The GSM is required"),
-        "welcome": m3,
+        "welcome": m4,
         "whoops": MessageLookupByLibrary.simpleMessage("Whoops!")
       };
 }

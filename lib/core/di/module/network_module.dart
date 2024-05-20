@@ -18,8 +18,8 @@ abstract class ServiceModule {
   /// A singleton dio provider.
   ///
   /// Calling it multiple times will return the same instance.
-  @LazySingleton()
-  Future<Dio> getDio(SharedPreferenceHelper sharedPreference) async {
+  @factoryMethod
+  Dio getDio(SharedPreferenceHelper sharedPreference) {
     final dio = Dio();
     // final authKey = await sharedPreference.authToken;
     appOptions;

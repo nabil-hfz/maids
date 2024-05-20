@@ -9,6 +9,8 @@ import 'package:maids/core/managers/localization/generated/l10n.dart';
 import 'package:maids/core/managers/theme/app_them_manager.dart';
 import 'package:provider/provider.dart';
 
+import 'todos/ui/controllers/todos_list_viewmodel.dart';
+
 class MyApp extends StatefulWidget {
   const MyApp({super.key, required this.appName});
 
@@ -47,6 +49,8 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
           providers: [
             ChangeNotifierProvider(create: (_) => _appLanguageManager),
             ChangeNotifierProvider(create: (_) => _appTheme),
+            ChangeNotifierProvider(
+                create: (_) => findDep<TodosListViewModel>()),
           ],
           child: Consumer<AppLanguageManager>(
             builder: (context, appLanguage, child) {

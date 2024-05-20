@@ -5,13 +5,14 @@ part 'base_filter.g.dart';
 
 @JsonSerializable(explicitToJson: true, anyMap: true)
 class BaseFilter extends Equatable {
-  int skip;
-  int limit;
+  @JsonKey(toJson: transformPageNumberToSkipCriteria)
+  final int skip;
+  final int limit;
 
   /// Constructs an instance of [BaseFilter] with the given [sort] and
   /// [pagination] parameters.
-  BaseFilter({
-    this.skip = 1,
+  const BaseFilter({
+    this.skip = 0,
     this.limit = 10,
   });
 
@@ -27,4 +28,8 @@ class BaseFilter extends Equatable {
   String toString() {
     return "$BaseFilter(${props.join(', ')})";
   }
+}
+
+int transformPageNumberToSkipCriteria(int page) {
+  return page * 10;
 }

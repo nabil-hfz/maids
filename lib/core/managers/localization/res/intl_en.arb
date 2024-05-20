@@ -88,7 +88,23 @@
   "log_out": "Log out",
   "logout_message": "Are you sure you want to log out?",
   "user_name": "Username",
-
   "enter_your_user_name": "Enter your username",
-  "err_not_valid_username_or_password": "Username or password is not valid."
+  "err_not_valid_username_or_password": "Username or password is not valid.",
+  "more": "More",
+  "todos": "Todos",
+  "deleting": "Deleting",
+  "min_characters_count": "Min {count} characters",
+  "add_new_todo": "Add New Todo",
+  "edit_todo": "Edit Todo",
+  "added_successfully": "Added successfully",
+  "updated_successfully": "Updated successfully",
+  "todo": "Todo",
+  "description": "description",
+  "add": "Add",
+  "update": "Update",
+  "idle_loading_text": "Eliberați pentru a încărca",
+  "loading_text": "Se încarcă...",
+  "no_more_data_text": "Niciun alt date disponibil",
+  "load_failed_text": "Încărcarea a eșuat",
+  "can_loading_text": "Poate încărca"
 }
