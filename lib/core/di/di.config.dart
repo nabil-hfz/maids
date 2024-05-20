@@ -10,7 +10,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:io' as _i4;
 
-import 'package:dio/dio.dart' as _i14;
+import 'package:dio/dio.dart' as _i17;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i5;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
@@ -22,18 +22,26 @@ import 'package:shared_preferences/shared_preferences.dart' as _i9;
 import '../../modules/auth/data/datasource/auth_local_data_source_impl.dart'
     as _i6;
 import '../../modules/auth/data/datasource/auth_remote_data_source_impl.dart'
-    as _i16;
-import '../../modules/auth/domain/blocs/auth_cubit.dart' as _i19;
-import '../../modules/auth/domain/repo/auth_repository_i.dart' as _i17;
-import '../../modules/auth/domain/repo/auth_repository_impl.dart' as _i18;
-import '../managers/localization/app_language.dart' as _i12;
+    as _i19;
+import '../../modules/auth/domain/blocs/auth_cubit.dart' as _i25;
+import '../../modules/auth/domain/repo/auth_repository_i.dart' as _i20;
+import '../../modules/auth/domain/repo/auth_repository_impl.dart' as _i21;
+import '../../modules/todos/data/datasource/todo_local_data_source_impl.dart'
+    as _i13;
+import '../../modules/todos/data/datasource/todo_remote_data_source_impl.dart'
+    as _i22;
+import '../../modules/todos/domain/blocs/todo_cubit.dart' as _i24;
+import '../../modules/todos/domain/repo/todo_repository_impl.dart' as _i23;
+import '../../modules/todos/ui/controllers/todo_detail_viewmodel.dart' as _i10;
+import '../../modules/todos/ui/controllers/todos_list_viewmodel.dart' as _i11;
+import '../managers/localization/app_language.dart' as _i15;
 import '../managers/navigation/app_navigator.dart' as _i3;
-import '../managers/network/connection_checker.dart' as _i10;
-import '../managers/network/dio_client.dart' as _i15;
-import '../managers/theme/app_them_manager.dart' as _i13;
-import '../shared_preferences/hlp_shared_preference.dart' as _i11;
-import 'module/local_module.dart' as _i20;
-import 'module/network_module.dart' as _i21;
+import '../managers/network/connection_checker.dart' as _i12;
+import '../managers/network/dio_client.dart' as _i18;
+import '../managers/theme/app_them_manager.dart' as _i16;
+import '../shared_preferences/hlp_shared_preference.dart' as _i14;
+import 'module/local_module.dart' as _i26;
+import 'module/network_module.dart' as _i27;
 
 // initializes the registration of main-scope dependencies inside of GetIt
 Future<_i1.GetIt> init(
@@ -49,55 +57,110 @@ Future<_i1.GetIt> init(
   final localModule = _$LocalModule();
   final serviceModule = _$ServiceModule();
   gh.singleton<_i3.AppNavigator>(() => _i3.AppNavigator());
-  gh.factoryAsync<_i4.Directory>(
-    () => localModule.appDocumentsDirectory,
+  await gh.singletonAsync<_i4.Directory>(
+    () async => await localModule.appDocumentsDirectory(),
     instanceName: 'appDocumentsDirectory',
+    preResolve: true,
   );
   await gh.factoryAsync<_i5.FlutterSecureStorage>(
-    () => localModule.secureStorage,
+    () => localModule.secureStorage(),
     preResolve: true,
   );
   gh.singleton<_i6.IAuthLocalDataSource>(
-      () => const _i6.ImplAuthLocalDataSource());
+    () => const _i6.ImplAuthLocalDataSource(),
+  );
   await gh.factoryAsync<_i7.InternetConnection>(
-    () => localModule.checker,
+    () => localModule.checker(),
     preResolve: true,
   );
-  gh.singletonAsync<_i8.Isar>(() async => localModule.database(
-      await gh.getAsync<_i4.Directory>(instanceName: 'appDocumentsDirectory')));
+  await gh.singletonAsync<_i8.Isar>(
+    () async => localModule.database(
+      await gh.getIt<_i4.Directory>(
+        instanceName: 'appDocumentsDirectory',
+      ),
+    ),
+    preResolve: true,
+  );
   await gh.factoryAsync<_i9.SharedPreferences>(
-    () => localModule.prefs,
+    () => localModule.prefs(),
     preResolve: true,
   );
-  gh.singleton<_i10.ConnectionChecker>(
-      () => _i10.ConnectionCheckerImpl(gh<_i7.InternetConnection>()));
-  gh.singleton<_i11.SharedPreferenceHelper>(() => _i11.SharedPreferenceHelper(
-        gh<_i9.SharedPreferences>(),
-        gh<_i5.FlutterSecureStorage>(),
-      ));
-  gh.singleton<_i12.AppLanguageManager>(
-    () => _i12.AppLanguageManager(gh<_i11.SharedPreferenceHelper>()),
+  gh.singleton<_i10.TodoDetailViewModel>(() => _i10.TodoDetailViewModel());
+  gh.singleton<_i11.TodosListViewModel>(() => _i11.TodosListViewModel());
+  gh.singleton<_i12.ConnectionChecker>(
+    () => _i12.ConnectionCheckerImpl(
+      gh<_i7.InternetConnection>(),
+    ),
+  );
+  await gh.singletonAsync<_i13.ITodoLocalDataSource>(
+    () async => _i13.TodoLocalDataSource(
+      await gh.getIt<_i8.Isar>(),
+    ),
+  );
+  gh.singleton<_i14.SharedPreferenceHelper>(
+    () => _i14.SharedPreferenceHelper(
+      gh<_i9.SharedPreferences>(),
+      gh<_i5.FlutterSecureStorage>(),
+    ),
+  );
+  gh.singleton<_i15.AppLanguageManager>(
+    () => _i15.AppLanguageManager(
+      gh<_i14.SharedPreferenceHelper>(),
+    ),
     dispose: (i) => i.disposeManager(),
   );
-  gh.singleton<_i13.AppThemeManager>(
-    () => _i13.AppThemeManager(gh<_i11.SharedPreferenceHelper>()),
+  gh.singleton<_i16.AppThemeManager>(
+    () => _i16.AppThemeManager(
+      gh<_i14.SharedPreferenceHelper>(),
+    ),
     dispose: (i) => i.disposeManager(),
   );
-  gh.lazySingletonAsync<_i14.Dio>(
-      () => serviceModule.getDio(gh<_i11.SharedPreferenceHelper>()));
-  gh.singletonAsync<_i15.DioClient>(
-      () async => _i15.DioClient(await gh.getAsync<_i14.Dio>()));
-  gh.singletonAsync<_i16.IAuthRemoteDataSource>(() async =>
-      _i16.ImplAuthRemoteDataSource(await gh.getAsync<_i15.DioClient>()));
-  gh.singletonAsync<_i17.IAuthRepository>(() async => _i18.ImplAuthRepository(
-        await gh.getAsync<_i16.IAuthRemoteDataSource>(),
-        gh<_i11.SharedPreferenceHelper>(),
-      ));
-  gh.singletonAsync<_i19.AuthCubit>(
-      () async => _i19.AuthCubit(await gh.getAsync<_i17.IAuthRepository>()));
+  gh.factory<_i17.Dio>(
+    () => serviceModule.getDio(
+      gh<_i14.SharedPreferenceHelper>(),
+    ),
+  );
+  gh.singleton<_i18.DioClient>(
+    () => _i18.DioClient(
+      gh<_i17.Dio>(),
+    ),
+  );
+  gh.singleton<_i19.IAuthRemoteDataSource>(
+    () => _i19.ImplAuthRemoteDataSource(
+      gh<_i18.DioClient>(),
+    ),
+  );
+  gh.singleton<_i20.IAuthRepository>(
+    () => _i21.ImplAuthRepository(
+      gh<_i19.IAuthRemoteDataSource>(),
+      gh<_i14.SharedPreferenceHelper>(),
+    ),
+  );
+  gh.singleton<_i22.ITodoRemoteDataSource>(
+    () => _i22.TodoRemoteDataSource(
+      gh<_i18.DioClient>(),
+    ),
+  );
+  await gh.singletonAsync<_i23.ImplTodoRepository>(
+    () async => _i23.ImplTodoRepository(
+      gh<_i12.ConnectionChecker>(),
+      gh<_i22.ITodoRemoteDataSource>(),
+      await gh.getAsync<_i13.ITodoLocalDataSource>(),
+    ),
+  );
+  await gh.singletonAsync<_i24.TodoCubit>(
+    () async => _i24.TodoCubit(
+      await gh.getAsync<_i23.ImplTodoRepository>(),
+    ),
+  );
+  gh.singleton<_i25.AuthCubit>(
+    () => _i25.AuthCubit(
+      gh<_i20.IAuthRepository>(),
+    ),
+  );
   return getIt;
 }
 
-class _$LocalModule extends _i20.LocalModule {}
+class _$LocalModule extends _i26.LocalModule {}
 
-class _$ServiceModule extends _i21.ServiceModule {}
+class _$ServiceModule extends _i27.ServiceModule {}
