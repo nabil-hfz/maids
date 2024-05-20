@@ -72,9 +72,6 @@ class DarkColors implements AppColors {
   @override
   Color get bottomSheetBGColor => Colors.grey.withOpacity(0.1);
 
-  @override
-  Color get tickBottomSheetColor => Colors.grey.withOpacity(0.1);
-
   ///
   /// DropDown Colors
   @override
@@ -90,9 +87,6 @@ class DarkColors implements AppColors {
 
   @override
   Color get cardBGColor => AppColors.darkCardColor;
-
-  @override
-  Color get numericPadColor => const Color(0xFF000000);
 
   ///
   /// Icon Colors
@@ -121,13 +115,6 @@ class DarkColors implements AppColors {
   /// Radio Colors
   @override
   Color get radioColor => AppColors.appPrimaryColor;
-
-  /// Rating
-  @override
-  Color get ratingActiveColor => const Color(0xffFFA800);
-
-  @override
-  Color get ratingUnActiveColor => Colors.grey.shade300;
 
   ///
   /// Text Colors
@@ -284,11 +271,6 @@ class DarkColors implements AppColors {
   Color get moreTopSectionBGColor => AppColors.white.withOpacity(0.17);
 
   ///
-  /// Background Colors
-  @override
-  Color get serviceBgColor => const Color(0xff383838);
-
-  ///
   /// splash color
   @override
   Color get splashAppBarColor => Colors.black;
@@ -298,41 +280,8 @@ class DarkColors implements AppColors {
   @override
   Color get authAppBarColor => Colors.black;
 
-  ///
-  /// edit profile color
-  @override
-  Color get editProfileCoverBGColor => Colors.white24;
-
-  @override
-  Color get borderProfileImageColor => Colors.white24;
-
   @override
   Color get logoutCancelBtnColor => Colors.white54;
-
-  ///
-  /// Package Section
-  @override
-  Color get packageBaseGradientStartColor =>
-      const Color(0xff6578FC).withOpacity(0.6);
-
-  @override
-  Color get packageBaseGradientEndColor =>
-      const Color(0xffF9F9FB).withOpacity(0.3);
-
-  @override
-  Color get packageCircleGradientStartColor => const Color(0xff6578FC);
-
-  @override
-  Color get packageCircleGradientEndColor => const Color(0xff6578FC);
-
-  @override
-  Color get packageCircleBaseColor => const Color(0xff000000).withOpacity(0.15);
-
-  @override
-  Color get packageCardBaseColor => AppColors.darkCardColor;
-
-  @override
-  Color get packageBgImageColor => const Color(0xffF9F9FB);
 
   ///
   /// Details Section
@@ -341,15 +290,6 @@ class DarkColors implements AppColors {
 
   @override
   Color get componentBgDetailsColor => Colors.black;
-
-  ///
-  /// Service Section
-  @override
-  Color get serviceDetailsAppBarGradientStartColor =>
-      AppColors.appPrimaryColor.withOpacity(0.2);
-
-  @override
-  Color get serviceDetailsAppBarGradientEndColor => Colors.transparent;
 
   ///
   /// Stepper Colors

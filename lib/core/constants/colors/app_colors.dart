@@ -77,7 +77,6 @@ abstract class AppColors {
   ///
   /// BottomSheet Colors
   late Color bottomSheetBGColor;
-  late Color tickBottomSheetColor;
 
   ///
   /// DropDown Colors
@@ -88,7 +87,6 @@ abstract class AppColors {
   late Color cardShadow;
   late Color signCardInfoColor;
   late Color cardBGColor;
-  late Color numericPadColor;
 
   ///
   /// Icon Colors
@@ -103,10 +101,6 @@ abstract class AppColors {
   ///
   /// Radio Colors
   late Color radioColor;
-
-  /// rating
-  late Color ratingActiveColor;
-  late Color ratingUnActiveColor;
 
   ///
   /// Text Colors
@@ -129,7 +123,6 @@ abstract class AppColors {
   late Color enabledBorderColor;
   late Color focusedBorderColor;
 
-  // TODO 2 Nabil: I should revise this color...
   late Color enabledBorder;
   late Color borderColor;
   late Color focusedErrorBorderColor;
@@ -174,8 +167,6 @@ abstract class AppColors {
   late Color bottomNavigationBarColor;
   late Color systemBottomNavigationBarColor;
 
-  // late Color selectedAppInkWellColor;
-
   ///
   /// Loaders & Shimmers Colors
   late Color loaderColor;
@@ -190,21 +181,12 @@ abstract class AppColors {
   late Color moreTopSectionBGColor;
 
   ///
-  /// Background Colors
-  late Color serviceBgColor;
-
-  ///
   /// splash color
   late Color splashAppBarColor;
 
   ///
   /// signup color
   late Color authAppBarColor;
-
-  ///
-  /// edit profile color
-  late Color editProfileCoverBGColor;
-  late Color borderProfileImageColor;
 
   ///
   /// logout cancel color
@@ -214,19 +196,4 @@ abstract class AppColors {
   /// Details Section
   late Color scaffoldBgDetailsColor;
   late Color componentBgDetailsColor;
-
-  ///
-  /// Package Section
-  late Color packageBaseGradientStartColor;
-  late Color packageBaseGradientEndColor;
-  late Color packageCircleGradientStartColor;
-  late Color packageCircleGradientEndColor;
-  late Color packageCircleBaseColor;
-  late Color packageCardBaseColor;
-  late Color packageBgImageColor;
-
-  ///
-  /// Service Section
-  late Color serviceDetailsAppBarGradientStartColor;
-  late Color serviceDetailsAppBarGradientEndColor;
 }
