@@ -57,6 +57,3 @@ Future<void> setPreferredOrientations() {
     DeviceOrientation.portraitUp,
   ]);
 }
-
-// "username":"atuny0",
-// "password":"9uQFF1Lh",

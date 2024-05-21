@@ -37,10 +37,6 @@ class SharedPreferenceHelper {
 
   bool? _getBool(String key) => _sharedPreference.getBool(key);
 
-  Future<bool> _saveInt(String key, int value) {
-    return _sharedPreference.setInt(key, value);
-  }
-
   // Auth Methods: ----------------------------------------------------------
   Future<String?> get authToken async {
     String? token = await _secureStorage.read(key: AppStrings.secureAuthToken);

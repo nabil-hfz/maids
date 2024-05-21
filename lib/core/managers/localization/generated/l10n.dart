@@ -680,6 +680,26 @@ class Translations {
     );
   }
 
+  /// `Missing user id`
+  String get err_missing_user_id {
+    return Intl.message(
+      'Missing user id',
+      name: 'err_missing_user_id',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Todo with this id not found`
+  String get err_todo_with_this_id_not_found {
+    return Intl.message(
+      'Todo with this id not found',
+      name: 'err_todo_with_this_id_not_found',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `More`
   String get more {
     return Intl.message(
@@ -800,51 +820,151 @@ class Translations {
     );
   }
 
-  /// `Eliberați pentru a încărca`
+  /// `Release to load`
   String get idle_loading_text {
     return Intl.message(
-      'Eliberați pentru a încărca',
+      'Release to load',
       name: 'idle_loading_text',
       desc: '',
       args: [],
     );
   }
 
-  /// `Se încarcă...`
+  /// `Loading...`
   String get loading_text {
     return Intl.message(
-      'Se încarcă...',
+      'Loading...',
       name: 'loading_text',
       desc: '',
       args: [],
     );
   }
 
-  /// `Niciun alt date disponibil`
+  /// `No more data`
   String get no_more_data_text {
     return Intl.message(
-      'Niciun alt date disponibil',
+      'No more data',
       name: 'no_more_data_text',
       desc: '',
       args: [],
     );
   }
 
-  /// `Încărcarea a eșuat`
+  /// `Loading failed`
   String get load_failed_text {
     return Intl.message(
-      'Încărcarea a eșuat',
+      'Loading failed',
       name: 'load_failed_text',
       desc: '',
       args: [],
     );
   }
 
-  /// `Poate încărca`
+  /// `Can load`
   String get can_loading_text {
     return Intl.message(
-      'Poate încărca',
+      'Can load',
       name: 'can_loading_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Completed`
+  String get completed {
+    return Intl.message(
+      'Completed',
+      name: 'completed',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In progress`
+  String get in_progress {
+    return Intl.message(
+      'In progress',
+      name: 'in_progress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit`
+  String get edit {
+    return Intl.message(
+      'Edit',
+      name: 'edit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Complete`
+  String get complete {
+    return Intl.message(
+      'Complete',
+      name: 'complete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get delete {
+    return Intl.message(
+      'Delete',
+      name: 'delete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to continue?`
+  String get are_you_sure_to_continue {
+    return Intl.message(
+      'Are you sure you want to continue?',
+      name: 'are_you_sure_to_continue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Complete Todo`
+  String get complete_todo {
+    return Intl.message(
+      'Complete Todo',
+      name: 'complete_todo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete Todo`
+  String get delete_todo {
+    return Intl.message(
+      'Delete Todo',
+      name: 'delete_todo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Updating`
+  String get updating {
+    return Intl.message(
+      'Updating',
+      name: 'updating',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Light mode`
+  String get light_mode {
+    return Intl.message(
+      'Light mode',
+      name: 'light_mode',
       desc: '',
       args: [],
     );

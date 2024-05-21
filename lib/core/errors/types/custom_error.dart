@@ -6,12 +6,14 @@ class CustomError extends BaseError {
   const CustomError._({super.message});
 
   factory CustomError.specific({String? message}) {
-    print('message == MSGCustomError.msgNotValidUserNameOrPassword '
-        'is ${message == MSGCustomError.msgNotValidUserNameOrPassword}');
+    print('object is ${message?.contains(MSGCustomError.msgTodoNotFound)}');
     if (message == MSGCustomError.msgNotValidUserNameOrPassword) {
       return const NotValidUserNameOrPasswordError();
+    } else if (message == MSGCustomError.msgUserIdIsRequired) {
+      return const MissingUserIdError();
+    } else if (message?.contains(MSGCustomError.msgTodoNotFound) ?? false) {
+      return const TodoNotFoundError();
     }
-    //
 
     return CustomError._(message: message);
   }
@@ -58,12 +60,12 @@ class PhoneNumberAlreadyExistError extends CustomError {
   }
 }
 
-class CityNotExistsError extends CustomError {
-  const CityNotExistsError({super.message}) : super._();
+class MissingUserIdError extends CustomError {
+  const MissingUserIdError({super.message}) : super._();
 
   @override
   String toString() {
-    return "$CityNotExistsError(message: $message, statusCode: $statusCode)";
+    return "$MissingUserIdError(message: $message, statusCode: $statusCode)";
   }
 }
 
@@ -130,12 +132,12 @@ class TokenError extends CustomError {
   }
 }
 
-class ProfileNotFoundError extends CustomError {
-  const ProfileNotFoundError({super.message}) : super._();
+class TodoNotFoundError extends CustomError {
+  const TodoNotFoundError({super.message}) : super._();
 
   @override
   String toString() {
-    return "$ProfileNotFoundError(message: $message, statusCode: $statusCode)";
+    return "$TodoNotFoundError(message: $message, statusCode: $statusCode)";
   }
 }
 

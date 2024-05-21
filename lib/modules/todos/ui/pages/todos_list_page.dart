@@ -5,12 +5,15 @@ import 'package:maids/core/bloc/base/states/base_state.dart';
 import 'package:maids/core/constants/app_dimens.dart';
 import 'package:maids/core/di/di.dart';
 import 'package:maids/core/managers/localization/app_translation.dart';
+import 'package:maids/core/managers/navigation/app_navigation_arg.dart';
+import 'package:maids/core/managers/navigation/nav_routes.dart';
 import 'package:maids/core/widgets/buttons/app_floating_action_button.dart';
 import 'package:maids/core/widgets/error/general_error_widget.dart';
 import 'package:maids/core/widgets/general/base_stateful_app_widget.dart';
 import 'package:maids/core/widgets/general/maids_app_bar.dart';
 import 'package:maids/core/widgets/general/refresh_wrapper.dart';
 import 'package:maids/modules/todos/domain/blocs/todo_cubit.dart';
+import 'package:maids/modules/todos/ui/args/todo_details_args.dart';
 import 'package:maids/modules/todos/ui/controllers/todos_list_viewmodel.dart';
 import 'package:maids/modules/todos/ui/widgets/todo_item_widget.dart';
 import 'package:maids/modules/todos/ui/widgets/todo_list_loader_widget.dart';
@@ -64,16 +67,16 @@ class _TodosPageState extends BaseAppState<TodosListPage> {
       backgroundColor: appTheme.appColors.scaffoldBgClearColor,
       floatingActionButton: AppFloatingActionButton(
         onPressed: () {
-          // navigator.pushNamed(
-          //   Routes.todoAddPage,
-          //   pathParameters: {
-          //     RoutesQP.action: 'add',
-          //   },
-          //   extra: BaseNavigationArg(
-          //     navigationType: NavigationType.sharedAxisTransition,
-          //     data: TodoAddEditArgs(TodoDetailType.add),
-          //   ),
-          // );
+          navigator.pushNamed(
+            Routes.todoAddEditPage,
+            pathParameters: {
+              RoutesQP.action: TodoDetailType.add.name,
+            },
+            extra: BaseNavigationArg(
+              navigationType: NavigationType.fadeScale,
+              data: TodoDetailsArgs(type: TodoDetailType.add),
+            ),
+          );
         },
       ),
       body: SafeArea(
@@ -98,7 +101,6 @@ class _TodosPageState extends BaseAppState<TodosListPage> {
   }
 
   Widget _buildBody(BaseState todosState) {
-    print('todosState is $todosState');
     if (todosState is BaseFailState) {
       final error = todosState;
       return Padding(

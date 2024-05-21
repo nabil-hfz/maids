@@ -25,37 +25,14 @@ class AppErrorWidget extends StatefulWidget {
 
     if (msgError is NotValidUserNameOrPasswordError) {
       msg = translate.err_not_valid_username_or_password;
-    }
-    // else if (msgError is PasswordNotExistsError) {
-    //   msg = translate.err_wrong_password;
-    // } else if (msgError is EmailAlreadyExistError) {
-    //   msg = translate.err_email_already_in_use;
-    // } else if (msgError is PhoneNumberAlreadyExistError) {
-    //   msg = translate.err_phone_already_in_use;
-    // } else if (msgError is CityNotExistsError) {
-    //   msg = translate.err_city_not_existed;
-    // } else if (msgError is CustomerTypesRequiredError) {
-    //   msg = translate.err_customer_type_required;
-    // } else if (msgError is NoCodeWasRegisteredError) {
-    //   msg = translate.err_no_code_was_registered;
-    // } else if (msgError is CodeMaxCountError) {
-    //   msg = translate.err_code_max_count;
-    // } else if (msgError is NotValidUserError) {
-    //   msg = translate.err_not_valid_user;
-    // } else if (msgError is NotValidUserNameOrPasswordError) {
-    //   msg = translate.err_not_valid_username_or_password;
-    // } else if (msgError is EmailNotConfirmedError) {
-    //   msg = translate.err_not_email_confirmed;
-    // } else if (msgError is TokenError) {
-    //   msg = translate.err_token;
-    // } else if (msgError is MaidsNotFoundError) {
-    //   msg = translate.err_maids_not_found;
-    // } else if (msgError is NotValidCodeError) {
-    //   msg = translate.err_the_code_is_not_valid;
-    // }
-    //
-    else if (msgError is ConnectionDioError) {
+    } else if (msgError is MissingUserIdError) {
+      msg = translate.err_missing_user_id;
+    } else if (msgError is TodoNotFoundError) {
+      msg = translate.err_todo_with_this_id_not_found;
+    } else if (msgError is ConnectionDioError) {
       msg = translate.connection_error;
+    } else if (msgError is NotFoundDioError) {
+      msg = translate.err_todo_with_this_id_not_found;
     } else {
       msg = translate.something_went_wrong_please_try_again;
     }

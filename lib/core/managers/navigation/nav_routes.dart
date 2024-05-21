@@ -8,5 +8,13 @@ class Routes {
   static const String logInPage = '/login';
 
   /// main pages
-  static const String homePage = '/home';
+  static const String _todos = '/todos';
+  static const String todosPage = _todos;
+  static const String todoAddEditPage = ':${RoutesQP.action}';
+  static const String morePage = '/more';
+}
+
+class RoutesQP {
+  static const String action = 'action';
+  static const String id = 'id';
 }

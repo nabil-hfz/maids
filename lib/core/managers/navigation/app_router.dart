@@ -8,7 +8,10 @@ import 'package:maids/core/widgets/not_found_page.dart';
 import 'package:maids/main.dart';
 import 'package:maids/modules/auth/ui/pages/log_in_page.dart';
 import 'package:maids/modules/main_root/ui/pages/main_root_page.dart';
+import 'package:maids/modules/more/ui/pages/more_page.dart';
 import 'package:maids/modules/spalsh/ui/pages/splash_page.dart';
+import 'package:maids/modules/todos/ui/args/todo_details_args.dart';
+import 'package:maids/modules/todos/ui/pages/todo_add_edit_page.dart';
 import 'package:maids/modules/todos/ui/pages/todos_list_page.dart';
 
 final _parentKey = GlobalKey<NavigatorState>();
@@ -57,12 +60,40 @@ abstract class AppRouter {
           StatefulShellBranch(
             routes: <RouteBase>[
               GoRoute(
-                name: Routes.homePage,
-                path: Routes.homePage,
+                name: Routes.todosPage,
+                path: Routes.todosPage,
                 builder: (BuildContext context, GoRouterState state) {
                   return const TodosListPage();
                 },
-                routes: <RouteBase>[],
+                routes: <RouteBase>[
+                  GoRoute(
+                    name: Routes.todoAddEditPage,
+                    path: Routes.todoAddEditPage,
+                    parentNavigatorKey: _parentKey,
+                    pageBuilder: (BuildContext context, GoRouterState state) {
+                      var navArgs = state.extra as BaseNavigationArg?;
+                      var args = navArgs?.data as TodoDetailsArgs?;
+                      final child = TodoAddEditPage(args: args);
+                      return pageBuilder(
+                        context,
+                        state,
+                        child,
+                        navArgs: navArgs,
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ],
+          ),
+          StatefulShellBranch(
+            routes: <RouteBase>[
+              GoRoute(
+                name: Routes.morePage,
+                path: Routes.morePage,
+                builder: (BuildContext context, GoRouterState state) {
+                  return const MorePage();
+                },
               ),
             ],
           ),

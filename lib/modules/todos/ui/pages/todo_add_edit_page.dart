@@ -14,6 +14,7 @@ import 'package:maids/core/widgets/general/maids_app_bar.dart';
 import 'package:maids/core/widgets/general/vertical_padding.dart';
 import 'package:maids/core/widgets/loader/app_loading_indicator.dart';
 import 'package:maids/core/widgets/mixins/description_mixin.dart';
+import 'package:maids/modules/auth/domain/blocs/auth_cubit.dart';
 import 'package:maids/modules/todos/domain/blocs/todo_cubit.dart';
 import 'package:maids/modules/todos/ui/args/todo_details_args.dart';
 import 'package:maids/modules/todos/ui/controllers/todo_detail_viewmodel.dart';
@@ -28,7 +29,7 @@ class TodoAddEditPage extends BaseAppStatefulWidget {
   });
 
   final String? todoId;
-  final TodoDetailsArgs args;
+  final TodoDetailsArgs? args;
 
   @override
   _TodoAddEditPageState createBaseState() => _TodoAddEditPageState();
@@ -53,19 +54,30 @@ class _TodoAddEditPageState extends BaseAppState<TodoAddEditPage>
     _detailViewModel.reset();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      var type = widget.args.type;
-      var todo = widget.args.todo;
-      switch (type) {
-        case TodoDetailType.edit:
-          _detailViewModel.setDetailType(TodoDetailType.edit);
-          _detailViewModel.setItemEditing(todo!);
-          if (todo.todo != null) {
-            _detailViewModel.enterTodo(todo.todo!);
-          }
+      final authCubit = findDep<AuthCubit>();
+      final profile = authCubit.profileEntity;
+      _detailViewModel.enterUserId(profile?.id);
+      if (widget.args != null) {
+        var type = widget.args?.type;
+        var todo = widget.args?.todo;
+        print("todo is $todo");
 
-          break;
-        case TodoDetailType.add:
-        default:
+        switch (type) {
+          case TodoDetailType.edit:
+            _detailViewModel.setDetailType(TodoDetailType.edit);
+            _detailViewModel.setItemEditing(todo!);
+            if (todo.todo != null) {
+              _detailViewModel.enterTodo(todo.todo!);
+              setDescriptionText = todo.todo!;
+            }
+            if (todo.completed ?? false) {
+              _detailViewModel.enterIsCompleted(todo.completed!);
+            }
+
+            break;
+          case TodoDetailType.add:
+          default:
+        }
       }
     });
   }
@@ -104,57 +116,53 @@ class _TodoAddEditPageState extends BaseAppState<TodoAddEditPage>
             listener: (context, state) {
               if (state.createTodo is BaseSuccessState ||
                   (state.updateTodo is BaseSuccessState)) {
-                Navigator.pop(context, true);
+                navigator.pop();
                 final msg = (_detailViewModel.isAdding)
                     ? translate.added_successfully
                     : translate.updated_successfully;
-                AppUtils.showSuccessMessage(
-                  message: msg,
-                  context: context,
-                );
+                AppUtils.showSuccessMessage(message: msg, context: context);
               }
 
               if (state.createTodo is BaseFailState) {
                 final error = (state.createTodo as BaseFailState).error;
                 final msg = AppErrorWidget.getErrorMsgByMessageCode(error);
-                AppUtils.showErrorMessage(
-                  context: context,
-                  message: msg,
-                );
+                AppUtils.showErrorMessage(context: context, message: msg);
               }
               if (state.updateTodo is BaseFailState) {
                 final error = (state.updateTodo as BaseFailState).error;
                 final msg = AppErrorWidget.getErrorMsgByMessageCode(error);
-                AppUtils.showErrorMessage(
-                  context: context,
-                  message: msg,
-                );
+                AppUtils.showErrorMessage(context: context, message: msg);
               }
             },
             builder: (context, state) {
               final isLoading = (state.createTodo is BaseLoadingState) ||
                   (state.updateTodo is BaseLoadingState);
-              return SingleChildScrollView(
-                keyboardDismissBehavior:
-                    ScrollViewKeyboardDismissBehavior.onDrag,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    wrapWidget([
-                      _buildDescription(),
-                      VerticalTextPadding.with16(),
-                    ]),
-                    VerticalTextPadding.with10(),
-                    wrapWidget(
-                      [
-                        _buildActionButton(isLoading),
-                        VerticalTextPadding.with20(),
-                      ],
-                      padding: EdgeInsets.zero,
+              return Column(
+                children: [
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          wrapWidget([
+                            _buildDescription(),
+                            VerticalTextPadding.with16(),
+                            if (!_detailViewModel.isAdding &&
+                                _detailViewModel.id > 150)
+                              Text(
+                                'This will not be edited on the server and if you do update it will give you an error.',
+                                style: appTextStyle.medium14.copyWith(
+                                  color: appTheme.appColors.textErrorColor,
+                                ),
+                              ),
+                          ]),
+                        ],
+                      ),
                     ),
-                  ],
-                ),
+                  ),
+                  _buildActionButton(isLoading),
+                ],
               );
             },
           ),
@@ -186,7 +194,7 @@ class _TodoAddEditPageState extends BaseAppState<TodoAddEditPage>
           cancelToken: cancelToken,
         );
       }
-    } else {}
+    }
   }
 
   Widget _buildDescription() {
@@ -248,7 +256,6 @@ class _TodoAddEditPageState extends BaseAppState<TodoAddEditPage>
                         )
                       : null,
                   onPressed: isLoading ? () {} : _saveItem,
-                  // onPressed: isSaving ? _saveItem : null,
                   text: _detailViewModel.isAdding
                       ? translate.add
                       : translate.update,

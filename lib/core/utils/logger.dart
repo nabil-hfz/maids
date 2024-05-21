@@ -4,7 +4,8 @@ import 'package:maids/main.dart';
 
 abstract class Logger {
   static void debug(dynamic value) {
-    if (!isProduction) {
+    // if (!isProduction)
+    {
       dev.log(
           '===============================[TAG]===============================');
       dev.log('$value');

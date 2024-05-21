@@ -35,12 +35,17 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "are_you_sure_to_continue": MessageLookupByLibrary.simpleMessage(
+            "هل أنت متأكد أنك تريد الاستمرار؟"),
         "can_loading_text":
             MessageLookupByLibrary.simpleMessage("يمكن التحميل"),
         "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
         "change_language": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
         "change_password":
             MessageLookupByLibrary.simpleMessage("تغيير كلمة المرور"),
+        "complete": MessageLookupByLibrary.simpleMessage("Complete"),
+        "complete_todo": MessageLookupByLibrary.simpleMessage("Complete Todo"),
+        "completed": MessageLookupByLibrary.simpleMessage("Completed"),
         "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
@@ -49,6 +54,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "current_password":
             MessageLookupByLibrary.simpleMessage("كلمة المرور الحالية"),
         "dark_mode": MessageLookupByLibrary.simpleMessage("الوضع الداكن"),
+        "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+        "delete_todo": MessageLookupByLibrary.simpleMessage("Delete Todo"),
         "deleting": MessageLookupByLibrary.simpleMessage("Deleting"),
         "description": MessageLookupByLibrary.simpleMessage("description"),
         "dio_bad_request_error":
@@ -65,6 +72,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "dio_send_timeout_to_the_server": MessageLookupByLibrary.simpleMessage(
             "انتهت مهلة الإرسال في الاتصال مع خادم API"),
         "done": MessageLookupByLibrary.simpleMessage("تم"),
+        "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
         "end_error_strings": MessageLookupByLibrary.simpleMessage(
             "========================================================"),
@@ -78,9 +86,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("أدخل كلمة المرور مرة أخرى"),
         "enter_your_user_name":
             MessageLookupByLibrary.simpleMessage("أدخل اسم المستخدم الخاص بك"),
+        "err_missing_user_id":
+            MessageLookupByLibrary.simpleMessage("حقل ال Id مطلوب"),
         "err_not_valid_username_or_password":
             MessageLookupByLibrary.simpleMessage(
                 "اسم المستخدم أو كلمة المرور غير صالحة."),
+        "err_todo_with_this_id_not_found":
+            MessageLookupByLibrary.simpleMessage("Todo with this id not found"),
         "error_internal_server":
             MessageLookupByLibrary.simpleMessage("خطأ في الخادم الداخلي"),
         "error_unexpected":
@@ -88,8 +100,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "home": MessageLookupByLibrary.simpleMessage("الصفحة الرئيسية"),
         "idle_loading_text":
             MessageLookupByLibrary.simpleMessage("تحرير للتحميل"),
+        "in_progress": MessageLookupByLibrary.simpleMessage("In progress"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "languages": MessageLookupByLibrary.simpleMessage("اللغات"),
+        "light_mode": MessageLookupByLibrary.simpleMessage("Light mode"),
         "load_failed_text":
             MessageLookupByLibrary.simpleMessage("فشل في التحميل"),
         "loading_text": MessageLookupByLibrary.simpleMessage("جارٍ التحميل..."),
@@ -132,6 +146,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "un_authorized_error":
             MessageLookupByLibrary.simpleMessage("خطأ غير مصرح به"),
         "unknown_error": MessageLookupByLibrary.simpleMessage("خطأ غير معروف"),
+        "updating": MessageLookupByLibrary.simpleMessage("Updating"),
         "user_cancel_error":
             MessageLookupByLibrary.simpleMessage("تم الإلغاء بواسطة المستخدم"),
         "user_email": MessageLookupByLibrary.simpleMessage("بريد المستخدم"),

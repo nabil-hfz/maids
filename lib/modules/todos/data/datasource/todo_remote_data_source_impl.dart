@@ -58,7 +58,6 @@ class TodoRemoteDataSource implements ITodoRemoteDataSource {
       queryParameters: queryParameters,
       cancelToken: cancelToken,
       converter: (json) {
-        print("json is $json");
         return TodosListModel.fromJson(json);
       },
     );
@@ -75,9 +74,8 @@ class TodoRemoteDataSource implements ITodoRemoteDataSource {
       AppEndpoints.createTodo,
       data: todoData,
       cancelToken: cancelToken,
-      converterDynamic: (todoId) {
-        todoData['id'] = todoId;
-        return TodoModel.fromJson(todoData);
+      converterDynamic: (todo) {
+        return TodoModel.fromJson(todo);
       },
     );
   }
@@ -88,7 +86,7 @@ class TodoRemoteDataSource implements ITodoRemoteDataSource {
     CancelToken? cancelToken,
   }) async {
     return await _dioClient.delete<TodoModel>(
-      AppEndpoints.deleteTodo(id),
+      AppEndpoints.todoDetails(id),
       cancelToken: cancelToken,
       converterDynamic: (data) {
         return TodoModel.fromJson(data);
@@ -102,7 +100,7 @@ class TodoRemoteDataSource implements ITodoRemoteDataSource {
     CancelToken? cancelToken,
   }) async {
     return await _dioClient.get<TodoModel>(
-      AppEndpoints.getTodoDetails(id),
+      AppEndpoints.todoDetails(id),
       cancelToken: cancelToken,
       converter: (json) {
         return TodoModel.fromJson(json);
@@ -116,13 +114,13 @@ class TodoRemoteDataSource implements ITodoRemoteDataSource {
     CancelToken? cancelToken,
   }) async {
     Map<String, dynamic> todoData = {...todo.toJson()};
-
-    return await _dioClient.put<TodoModel>(
-      "${AppEndpoints.updateTodo}${todo.id}",
+    todoData.remove("id");
+    return await _dioClient.patch<TodoModel>(
+      AppEndpoints.todoDetails(todo.id),
       data: todoData,
       cancelToken: cancelToken,
       converterDynamic: (response) {
-        return TodoModel.fromJson(todoData);
+        return TodoModel.fromJson(response);
       },
     );
   }

@@ -13,12 +13,9 @@ class AppEndpoints {
 
   static const String getTodosList = _todo;
 
-  static String getTodoDetails(int id) => "$_todo/$id";
   static const String createTodo = "$_todo/add";
 
-  static String updateTodo(int id) => "$_todo/$id";
-
-  static String deleteTodo(int id) => "$_todo/$id";
+  static String todoDetails(id) => "todos/${id.toString()}";
 
   static const int receiveTimeout = 15000;
 

@@ -9,20 +9,19 @@ import 'package:maids/core/constants/app_animation_duration.dart';
 import 'package:maids/core/di/di.dart';
 import 'package:maids/core/generated_files/assets/assets.gen.dart';
 import 'package:maids/core/managers/navigation/nav_routes.dart';
-import 'package:maids/core/managers/theme/app_them_manager.dart';
 import 'package:maids/core/utils/device_utils.dart';
+import 'package:maids/core/widgets/general/base_stateful_app_widget.dart';
 import 'package:maids/core/widgets/images/app_image_widget.dart';
 import 'package:maids/modules/auth/domain/blocs/auth_cubit.dart';
 
-class SplashPage extends StatefulWidget {
+class SplashPage extends BaseAppStatefulWidget {
   const SplashPage({super.key});
 
   @override
-  State<StatefulWidget> createState() => _SplashPageState();
+  _SplashPageState createBaseState() => _SplashPageState();
 }
 
-class _SplashPageState extends State<SplashPage> {
-  late AppThemeManager _themeManager;
+class _SplashPageState extends BaseAppState<SplashPage> {
   late AuthCubit _cubit;
   bool hasNavigated = false;
   Timer? _timer;
@@ -38,7 +37,6 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _themeManager = context.read<AppThemeManager>();
   }
 
   @override
@@ -64,16 +62,12 @@ class _SplashPageState extends State<SplashPage> {
               hasNavigated = true;
             });
           }
-          navigator.goNamedAndRemoveUntil(Routes.homePage);
+          navigator.goNamedAndRemoveUntil(Routes.todosPage);
         }
       },
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: _themeManager.appColors.scaffoldBgColor,
-          appBar: AppBar(
-            automaticallyImplyLeading: false,
-            backgroundColor: _themeManager.appColors.splashAppBarColor,
-          ),
+          backgroundColor: appTheme.appColors.scaffoldBgColor,
           body: SafeArea(
             child: SizedBox(
               height: height,

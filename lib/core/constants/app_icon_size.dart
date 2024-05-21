@@ -1,6 +1,8 @@
 abstract class AppIconSize {
   const AppIconSize();
 
+  static const double size_4 = 4;
+  static const double size_6 = 6;
   static const double size_10 = 10;
   static const double size_12 = 12;
   static const double size_14 = 14;

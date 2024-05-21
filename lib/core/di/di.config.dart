@@ -57,8 +57,8 @@ Future<_i1.GetIt> init(
   final localModule = _$LocalModule();
   final serviceModule = _$ServiceModule();
   gh.singleton<_i3.AppNavigator>(() => _i3.AppNavigator());
-  await gh.singletonAsync<_i4.Directory>(
-    () async => await localModule.appDocumentsDirectory(),
+  await gh.factoryAsync<_i4.Directory>(
+    () => localModule.appDocumentsDirectory(),
     instanceName: 'appDocumentsDirectory',
     preResolve: true,
   );
@@ -67,18 +67,14 @@ Future<_i1.GetIt> init(
     preResolve: true,
   );
   gh.singleton<_i6.IAuthLocalDataSource>(
-    () => const _i6.ImplAuthLocalDataSource(),
-  );
+      () => const _i6.ImplAuthLocalDataSource());
   await gh.factoryAsync<_i7.InternetConnection>(
     () => localModule.checker(),
     preResolve: true,
   );
-  await gh.singletonAsync<_i8.Isar>(
-    () async => localModule.database(
-      await gh.getIt<_i4.Directory>(
-        instanceName: 'appDocumentsDirectory',
-      ),
-    ),
+  await gh.factoryAsync<_i8.Isar>(
+    () => localModule
+        .database(gh<_i4.Directory>(instanceName: 'appDocumentsDirectory')),
     preResolve: true,
   );
   await gh.factoryAsync<_i9.SharedPreferences>(
@@ -88,76 +84,41 @@ Future<_i1.GetIt> init(
   gh.singleton<_i10.TodoDetailViewModel>(() => _i10.TodoDetailViewModel());
   gh.singleton<_i11.TodosListViewModel>(() => _i11.TodosListViewModel());
   gh.singleton<_i12.ConnectionChecker>(
-    () => _i12.ConnectionCheckerImpl(
-      gh<_i7.InternetConnection>(),
-    ),
-  );
-  await gh.singletonAsync<_i13.ITodoLocalDataSource>(
-    () async => _i13.TodoLocalDataSource(
-      await gh.getIt<_i8.Isar>(),
-    ),
-  );
-  gh.singleton<_i14.SharedPreferenceHelper>(
-    () => _i14.SharedPreferenceHelper(
-      gh<_i9.SharedPreferences>(),
-      gh<_i5.FlutterSecureStorage>(),
-    ),
-  );
+      () => _i12.ConnectionCheckerImpl(gh<_i7.InternetConnection>()));
+  gh.singleton<_i13.ITodoLocalDataSource>(
+      () => _i13.TodoLocalDataSource(gh<_i8.Isar>()));
+  gh.singleton<_i14.SharedPreferenceHelper>(() => _i14.SharedPreferenceHelper(
+        gh<_i9.SharedPreferences>(),
+        gh<_i5.FlutterSecureStorage>(),
+      ));
   gh.singleton<_i15.AppLanguageManager>(
-    () => _i15.AppLanguageManager(
-      gh<_i14.SharedPreferenceHelper>(),
-    ),
+    () => _i15.AppLanguageManager(gh<_i14.SharedPreferenceHelper>()),
     dispose: (i) => i.disposeManager(),
   );
   gh.singleton<_i16.AppThemeManager>(
-    () => _i16.AppThemeManager(
-      gh<_i14.SharedPreferenceHelper>(),
-    ),
+    () => _i16.AppThemeManager(gh<_i14.SharedPreferenceHelper>()),
     dispose: (i) => i.disposeManager(),
   );
   gh.factory<_i17.Dio>(
-    () => serviceModule.getDio(
-      gh<_i14.SharedPreferenceHelper>(),
-    ),
-  );
-  gh.singleton<_i18.DioClient>(
-    () => _i18.DioClient(
-      gh<_i17.Dio>(),
-    ),
-  );
+      () => serviceModule.getDio(gh<_i14.SharedPreferenceHelper>()));
+  gh.singleton<_i18.DioClient>(() => _i18.DioClient(gh<_i17.Dio>()));
   gh.singleton<_i19.IAuthRemoteDataSource>(
-    () => _i19.ImplAuthRemoteDataSource(
-      gh<_i18.DioClient>(),
-    ),
-  );
-  gh.singleton<_i20.IAuthRepository>(
-    () => _i21.ImplAuthRepository(
-      gh<_i19.IAuthRemoteDataSource>(),
-      gh<_i14.SharedPreferenceHelper>(),
-    ),
-  );
+      () => _i19.ImplAuthRemoteDataSource(gh<_i18.DioClient>()));
+  gh.singleton<_i20.IAuthRepository>(() => _i21.ImplAuthRepository(
+        gh<_i19.IAuthRemoteDataSource>(),
+        gh<_i14.SharedPreferenceHelper>(),
+      ));
   gh.singleton<_i22.ITodoRemoteDataSource>(
-    () => _i22.TodoRemoteDataSource(
-      gh<_i18.DioClient>(),
-    ),
-  );
-  await gh.singletonAsync<_i23.ImplTodoRepository>(
-    () async => _i23.ImplTodoRepository(
-      gh<_i12.ConnectionChecker>(),
-      gh<_i22.ITodoRemoteDataSource>(),
-      await gh.getAsync<_i13.ITodoLocalDataSource>(),
-    ),
-  );
-  await gh.singletonAsync<_i24.TodoCubit>(
-    () async => _i24.TodoCubit(
-      await gh.getAsync<_i23.ImplTodoRepository>(),
-    ),
-  );
+      () => _i22.TodoRemoteDataSource(gh<_i18.DioClient>()));
+  gh.singleton<_i23.ImplTodoRepository>(() => _i23.ImplTodoRepository(
+        gh<_i12.ConnectionChecker>(),
+        gh<_i22.ITodoRemoteDataSource>(),
+        gh<_i13.ITodoLocalDataSource>(),
+      ));
+  gh.singleton<_i24.TodoCubit>(
+      () => _i24.TodoCubit(gh<_i23.ImplTodoRepository>()));
   gh.singleton<_i25.AuthCubit>(
-    () => _i25.AuthCubit(
-      gh<_i20.IAuthRepository>(),
-    ),
-  );
+      () => _i25.AuthCubit(gh<_i20.IAuthRepository>()));
   return getIt;
 }
 

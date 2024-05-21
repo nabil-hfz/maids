@@ -30,7 +30,11 @@ class TodosListModel extends BaseModel<TodosListEntity> {
 }
 
 @collection
-@JsonSerializable(explicitToJson: true, anyMap: true)
+@JsonSerializable(
+  explicitToJson: true,
+  anyMap: true,
+  includeIfNull: false,
+)
 class TodoModel extends BaseModel<TodoEntity> {
   final int? id;
   final String? todo;
@@ -66,15 +70,4 @@ class TodoModel extends BaseModel<TodoEntity> {
       deletedOn: deletedOn,
     );
   }
-
-  // @override
-  // @ignore
-  // List<Object?> get props => [
-  //       id,
-  //       todo,
-  //       userId,
-  //       completed,
-  //       isDeleted,
-  //       deletedOn,
-  //     ];
 }

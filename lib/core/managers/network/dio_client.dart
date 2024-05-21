@@ -133,6 +133,39 @@ class DioClient {
     }
   }
 
+  Future<Result<BaseModel>> patch<BaseModel>(
+    String uri, {
+    data,
+    BaseModel Function(dynamic)? converter,
+    BaseModel Function(dynamic)? converterDynamic,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    try {
+      final Response response = await _dio.patch(
+        uri,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+        cancelToken: cancelToken,
+        onSendProgress: onSendProgress,
+        onReceiveProgress: onReceiveProgress,
+      );
+      BaseModel r;
+      if (converterDynamic != null) {
+        r = converterDynamic(response.data);
+      } else {
+        r = converter!(response.data);
+      }
+      return Result(data: r);
+    } catch (error, stack) {
+      return Result(error: ErrorUtil.handleError(error, stack));
+    }
+  }
+
   Future<Result<BaseModel>> delete<BaseModel>(
     String uri, {
     data,

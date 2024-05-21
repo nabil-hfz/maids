@@ -16,14 +16,13 @@ class TodoDetailViewModel extends ChangeNotifier {
   bool _isDisposed = false;
 
   //
-  int? _id;
   int? _userId;
   String _todo = '';
-  bool _isCompleted = true;
+  bool _isCompleted = false;
 
   //
 
-  int? get id => _id;
+  int get id => _itemEditing?.id ?? -1;
 
   int? get userId => _userId;
 
@@ -45,10 +44,13 @@ class TodoDetailViewModel extends ChangeNotifier {
 
   void setItemEditing(TodoEntity item) {
     _itemEditing = item;
-    _id = _itemEditing?.id;
     _userId = _itemEditing?.userId;
 
     if (!_isDisposed) notifyListeners();
+  }
+
+  void enterUserId(int? id) {
+    _userId = id;
   }
 
   void enterTodo(String todo) {
@@ -65,18 +67,17 @@ class TodoDetailViewModel extends ChangeNotifier {
     switch (_type) {
       case TodoDetailType.add:
         item = TodoEntity(
-          userId: _userId,
+          userId: userId,
           todo: _todo,
           completed: _isCompleted,
         );
         break;
       case TodoDetailType.edit:
         item = TodoEntity(
-          id: id,
+          id: _itemEditing!.id,
           userId: _userId,
           todo: _todo,
           completed: _isCompleted,
-          isDeleted: true,
         );
 
         break;
@@ -89,7 +90,7 @@ class TodoDetailViewModel extends ChangeNotifier {
 
     _todo = '';
     _isDisposed = false;
-    _isCompleted = true;
+    _isCompleted = false;
     _itemEditing = null;
   }
 

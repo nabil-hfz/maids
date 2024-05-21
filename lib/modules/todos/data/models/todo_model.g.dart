@@ -968,11 +968,20 @@ TodoModel _$TodoModelFromJson(Map json) => TodoModel(
           : DateTime.parse(json['deletedOn'] as String),
     );
 
-Map<String, dynamic> _$TodoModelToJson(TodoModel instance) => <String, dynamic>{
-      'id': instance.id,
-      'todo': instance.todo,
-      'userId': instance.userId,
-      'completed': instance.completed,
-      'isDeleted': instance.isDeleted,
-      'deletedOn': instance.deletedOn?.toIso8601String(),
-    };
+Map<String, dynamic> _$TodoModelToJson(TodoModel instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull('todo', instance.todo);
+  writeNotNull('userId', instance.userId);
+  writeNotNull('completed', instance.completed);
+  writeNotNull('isDeleted', instance.isDeleted);
+  writeNotNull('deletedOn', instance.deletedOn?.toIso8601String());
+  return val;
+}

@@ -237,9 +237,9 @@ class _LoginPageState extends BaseAppState<LoginPage>
       listener: (ctx, state) {
         final loginState = state.login;
         if (loginState is LoginSuccess) {
-          final data = loginState;
+          // final data = loginState;
 
-          navigator.goNamed(Routes.homePage);
+          navigator.goNamed(Routes.todosPage);
 
           if (loginState.username != null) {
             AppUtils.showToast(

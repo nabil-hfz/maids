@@ -91,6 +91,7 @@
   "user_name": "اسم المستخدم",
   "enter_your_user_name": "أدخل اسم المستخدم الخاص بك",
   "err_not_valid_username_or_password": "اسم المستخدم أو كلمة المرور غير صالحة.",
+  "err_missing_user_id": "حقل ال Id مطلوب",
   "more": "مزيد",
   "todos": "Todos",
   "deleting": "Deleting",
@@ -101,5 +102,18 @@
   "loading_text": "جارٍ التحميل...",
   "no_more_data_text": "لا توجد مزيد من البيانات",
   "load_failed_text": "فشل في التحميل",
-  "can_loading_text": "يمكن التحميل"
+  "can_loading_text": "يمكن التحميل",
+  "completed": "Completed",
+  "in_progress": "In progress",
+  "edit": "Edit",
+  "complete": "Complete",
+  "delete": "Delete",
+  "are_you_sure_to_continue": "هل أنت متأكد أنك تريد الاستمرار؟",
+  "complete_todo": "Complete Todo",
+  "err_todo_with_this_id_not_found": "Todo with this id not found",
+
+  "delete_todo": "Delete Todo",
+  "updating": "Updating",
+  "light_mode": "Light mode"
+
 }

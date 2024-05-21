@@ -31,16 +31,16 @@ class AuthCubit extends BaseCubit<AuthState> {
   AuthCubit(this._repository) : super(AuthState.initialState());
 
   void checkIfLoggedIn() async {
-    emit(state.copyWith(isLoggedIn: const BaseLoadingState()));
-    final resultFirstLaunch = await _repository.checkFirstLaunch();
-    if (resultFirstLaunch) {
-      emit(
-        state.copyWith(
-          isLoggedIn: const AppFirstLoadSuccess(),
-        ),
-      );
-      return;
-    }
+    // emit(state.copyWith(isLoggedIn: const BaseLoadingState()));
+    // final resultFirstLaunch = await _repository.checkFirstLaunch();
+    // if (resultFirstLaunch) {
+    //   emit(
+    //     state.copyWith(
+    //       isLoggedIn: const AppFirstLoadSuccess(),
+    //     ),
+    //   );
+    //   return;
+    // }
 
     final results = await _repository.isAlreadyLogged();
     // If th user is already logged in then we will fetch the profile.

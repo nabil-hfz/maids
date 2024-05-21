@@ -1,5 +1,4 @@
 // Project imports:
-import 'package:isar/isar.dart';
 import 'package:maids/core/entity/base_entity.dart';
 import 'package:maids/modules/todos/data/models/todo_model.dart';
 
@@ -59,15 +58,34 @@ class TodoEntity extends BaseEntity {
   @override
   List<Object?> get props => [
         id,
-        todo,
         userId,
+        todo,
         completed,
         isDeleted,
         deletedOn,
       ];
 
+  TodoEntity copyWith({
+    int? id,
+    String? todo,
+    int? userId,
+    bool? completed,
+    bool? isDeleted,
+    DateTime? deletedOn,
+  }) {
+    return TodoEntity(
+      id: id ?? this.id,
+      todo: todo ?? this.todo,
+      userId: userId ?? this.userId,
+      completed: completed ?? this.completed,
+      isDeleted: isDeleted ?? this.isDeleted,
+      deletedOn: deletedOn ?? this.deletedOn,
+    );
+  }
+
   @override
   String toString() {
+    // props.map((e) => e.runtimeType.toString());
     return '$TodoEntity(${props.join(', ')})';
   }
 }

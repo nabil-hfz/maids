@@ -39,13 +39,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_new_todo": MessageLookupByLibrary.simpleMessage("Add New Todo"),
         "added_successfully":
             MessageLookupByLibrary.simpleMessage("Added successfully"),
-        "can_loading_text":
-            MessageLookupByLibrary.simpleMessage("Poate încărca"),
+        "are_you_sure_to_continue": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to continue?"),
+        "can_loading_text": MessageLookupByLibrary.simpleMessage("Can load"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "change_language":
             MessageLookupByLibrary.simpleMessage("Change Language"),
         "change_password":
             MessageLookupByLibrary.simpleMessage("Change password"),
+        "complete": MessageLookupByLibrary.simpleMessage("Complete"),
+        "complete_todo": MessageLookupByLibrary.simpleMessage("Complete Todo"),
+        "completed": MessageLookupByLibrary.simpleMessage("Completed"),
         "confirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("Confirm password"),
@@ -54,6 +58,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "current_password":
             MessageLookupByLibrary.simpleMessage("Current password"),
         "dark_mode": MessageLookupByLibrary.simpleMessage("Dark mode"),
+        "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+        "delete_todo": MessageLookupByLibrary.simpleMessage("Delete Todo"),
         "deleting": MessageLookupByLibrary.simpleMessage("Deleting"),
         "description": MessageLookupByLibrary.simpleMessage("description"),
         "dio_bad_request_error":
@@ -70,6 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "dio_send_timeout_to_the_server": MessageLookupByLibrary.simpleMessage(
             "Send timeout in connection with API server"),
         "done": MessageLookupByLibrary.simpleMessage("Done"),
+        "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "edit_todo": MessageLookupByLibrary.simpleMessage("Edit Todo"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "end_error_strings": MessageLookupByLibrary.simpleMessage(
@@ -84,21 +91,27 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter your password again"),
         "enter_your_user_name":
             MessageLookupByLibrary.simpleMessage("Enter your username"),
+        "err_missing_user_id":
+            MessageLookupByLibrary.simpleMessage("Missing user id"),
         "err_not_valid_username_or_password":
             MessageLookupByLibrary.simpleMessage(
                 "Username or password is not valid."),
+        "err_todo_with_this_id_not_found":
+            MessageLookupByLibrary.simpleMessage("Todo with this id not found"),
         "error_internal_server":
             MessageLookupByLibrary.simpleMessage("Internal server error"),
         "error_unexpected":
             MessageLookupByLibrary.simpleMessage("Unexpected Error happened"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "idle_loading_text":
-            MessageLookupByLibrary.simpleMessage("Eliberați pentru a încărca"),
+            MessageLookupByLibrary.simpleMessage("Release to load"),
+        "in_progress": MessageLookupByLibrary.simpleMessage("In progress"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "languages": MessageLookupByLibrary.simpleMessage("Languages"),
+        "light_mode": MessageLookupByLibrary.simpleMessage("Light mode"),
         "load_failed_text":
-            MessageLookupByLibrary.simpleMessage("Încărcarea a eșuat"),
-        "loading_text": MessageLookupByLibrary.simpleMessage("Se încarcă..."),
+            MessageLookupByLibrary.simpleMessage("Loading failed"),
+        "loading_text": MessageLookupByLibrary.simpleMessage("Loading..."),
         "log_in": MessageLookupByLibrary.simpleMessage("Log In"),
         "log_out": MessageLookupByLibrary.simpleMessage("Log out"),
         "logout_message": MessageLookupByLibrary.simpleMessage(
@@ -107,7 +120,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "more": MessageLookupByLibrary.simpleMessage("More"),
         "new_account": MessageLookupByLibrary.simpleMessage("New account?"),
         "no_more_data_text":
-            MessageLookupByLibrary.simpleMessage("Niciun alt date disponibil"),
+            MessageLookupByLibrary.simpleMessage("No more data"),
         "notifications_settings":
             MessageLookupByLibrary.simpleMessage("Notifications settings"),
         "optional": MessageLookupByLibrary.simpleMessage("Optional"),
@@ -140,6 +153,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "update": MessageLookupByLibrary.simpleMessage("Update"),
         "updated_successfully":
             MessageLookupByLibrary.simpleMessage("Updated successfully"),
+        "updating": MessageLookupByLibrary.simpleMessage("Updating"),
         "user_cancel_error":
             MessageLookupByLibrary.simpleMessage("Canceled by the user"),
         "user_email": MessageLookupByLibrary.simpleMessage("User email"),

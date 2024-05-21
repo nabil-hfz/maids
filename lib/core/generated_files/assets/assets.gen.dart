@@ -23,18 +23,33 @@ class $AssetsIconsGen {
   /// File path: assets/icons/invisible.svg
   SvgGenImage get invisible => const SvgGenImage('assets/icons/invisible.svg');
 
+  /// File path: assets/icons/language.svg
+  SvgGenImage get language => const SvgGenImage('assets/icons/language.svg');
+
   /// File path: assets/icons/logout.svg
   SvgGenImage get logout => const SvgGenImage('assets/icons/logout.svg');
 
   /// File path: assets/icons/more.svg
   SvgGenImage get more => const SvgGenImage('assets/icons/more.svg');
 
+  /// File path: assets/icons/terms_service.svg
+  SvgGenImage get termsService =>
+      const SvgGenImage('assets/icons/terms_service.svg');
+
   /// File path: assets/icons/visible.svg
   SvgGenImage get visible => const SvgGenImage('assets/icons/visible.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values =>
-      [arrowBack, home, invisible, logout, more, visible];
+  List<SvgGenImage> get values => [
+        arrowBack,
+        home,
+        invisible,
+        language,
+        logout,
+        more,
+        termsService,
+        visible
+      ];
 }
 
 class $AssetsImagesGen {

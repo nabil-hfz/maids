@@ -54,6 +54,7 @@ class _MainRootPageState extends State<MainRootPage> {
   }
 
   void onTap(index) {
+    print('index is ${index}');
     widget.navigationShell.goBranch(
       index,
       initialLocation: index == widget.navigationShell.currentIndex,

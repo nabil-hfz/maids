@@ -34,6 +34,7 @@ class ImplAuthRepository extends IAuthRepository {
       cancelToken: cancelToken,
       requestModel: request,
     );
+
     if (rememberMe) {
       if (result.data != null) {
         await _saveProfileAndToken(result.data!);
@@ -89,9 +90,11 @@ class ImplAuthRepository extends IAuthRepository {
   }
 
   Future<void> _saveProfileAndToken(ProfileModel result) async {
-    await _sharedPreferenceHelper.saveAuthProfile(result);
-
+    print('login result is ${result.token}');
     if (result.token?.isNotEmpty ?? false) {
+      await _sharedPreferenceHelper.saveAuthProfile(result);
+      await _sharedPreferenceHelper.saveAuthToken(result.token);
+
       await _sharedPreferenceHelper.saveLoginStatus(true);
     }
   }

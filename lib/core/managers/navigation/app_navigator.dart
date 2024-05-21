@@ -30,7 +30,10 @@ class AppNavigator {
 
   void go<T>(String routeName, {dynamic extra}) {
     DeviceUtils.hideKeyboard(navigatorKey.currentContext!);
-    router.go(routeName, extra: extra);
+    router.go(
+      routeName,
+      extra: extra,
+    );
   }
 
   void goNamed(
