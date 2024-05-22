@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
@@ -21,7 +22,8 @@ Future<void> main() async {
     if (baseUrl.isNotEmpty) {
       AppEndpoints.baseUrl = baseUrl;
     } else {
-      // throw Error.safeToString("BASE_URL is null");
+      SystemNavigator.pop();
+      exit(0);
     }
 
     await configureDependencies();

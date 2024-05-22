@@ -1,7 +1,7 @@
 class AppEndpoints {
   AppEndpoints._();
 
-  static String baseUrl = "https://dummyjson.com/";
+  static String baseUrl = "";
   static const String _auth = "auth";
 
   static const String login = "$_auth/login";
