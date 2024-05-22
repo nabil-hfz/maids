@@ -19,6 +19,15 @@ flutter doctor -v
 
 Follow these steps to set up and run the project:
 
-- **Clone the repository**: ```git clone https://github.com/nabil-hfz/maids.git```
-- **Clean the project and fetch dependencies**: ```flutter clean && flutter pub get```
-- **Run the application**: ```flutter run --dart-define=BASE_URL=https://dummyjson.com/```
+- **Clone the repository**:
+```sh
+git clone https://github.com/nabil-hfz/maids.git
+```
+- **Clean the project and fetch dependencies**: 
+```sh
+flutter clean && flutter pub get
+```
+- **Run the application**: 
+```sh
+flutter run --dart-define=BASE_URL=https://dummyjson.com/
+```
