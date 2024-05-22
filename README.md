@@ -3,6 +3,17 @@
 ## Project Overview
 Maids.cc is a Flutter application designed to list some already created todos. This document provides the necessary steps to set up and run the project on your local machine.
 
+## Features
+- **List with Pagination**: Display a list of todos with pagination.
+- **Local Cache**: Cache the list of todos locally for offline access.
+- **CRUD Operations**: Create, read, update, and delete todos.
+- **Complete Todo**: Mark todos as complete.
+- **Change Language**: Switch between different languages.
+- **Change Theme Color**: Customize the theme color of the application.
+- **Authentication**: Login and logout functionality with backend authentication.
+- **Profile Info**: View user profile information.
+
+
 ## Prerequisites
 
 - **Flutter**: Version 3.19.3
