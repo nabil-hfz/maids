@@ -85,7 +85,6 @@ class TodoEntity extends BaseEntity {
 
   @override
   String toString() {
-    // props.map((e) => e.runtimeType.toString());
     return '$TodoEntity(${props.join(', ')})';
   }
 }

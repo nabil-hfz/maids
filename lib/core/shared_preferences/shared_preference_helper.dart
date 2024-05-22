@@ -25,17 +25,17 @@ class SharedPreferenceHelper {
     return _sharedPreference.remove(key);
   }
 
-  Future<bool> _saveString(String key, String value) {
+  Future<bool> saveString(String key, String value) {
     return _sharedPreference.setString(key, value);
   }
 
-  String? _getString(String key) => _sharedPreference.getString(key);
+  String? getString(String key) => _sharedPreference.getString(key);
 
-  Future<bool> _saveBool(String key, bool value) {
+  Future<bool> saveBool(String key, bool value) {
     return _sharedPreference.setBool(key, value);
   }
 
-  bool? _getBool(String key) => _sharedPreference.getBool(key);
+  bool? getBool(String key) => _sharedPreference.getBool(key);
 
   // Auth Methods: ----------------------------------------------------------
   Future<String?> get authToken async {
@@ -63,7 +63,7 @@ class SharedPreferenceHelper {
 
   // Maids Profile: ----------------------------------------------------------
   Future<ProfileModel?> get profile async {
-    final result = _getString(AppStrings.prefAuthMaidsProfile);
+    final result = getString(AppStrings.prefAuthMaidsProfile);
     if (result != null) {
       return ProfileModel.fromJson(json.decode(result));
     }
@@ -71,7 +71,7 @@ class SharedPreferenceHelper {
   }
 
   Future<bool> saveAuthProfile(ProfileModel maidsProfile) async {
-    return _saveString(
+    return saveString(
       AppStrings.prefAuthMaidsProfile,
       json.encode(maidsProfile.toJson()),
     );
@@ -83,53 +83,53 @@ class SharedPreferenceHelper {
 
   // Login:---------------------------------------------------------------------
   Future<bool> get isLoggedIn async {
-    return _getBool(AppStrings.prefIsLoggedIn) ?? false;
+    return getBool(AppStrings.prefIsLoggedIn) ?? false;
   }
 
   Future<bool> saveLoginStatus(bool value) async {
-    return _saveBool(AppStrings.prefIsLoggedIn, value);
+    return saveBool(AppStrings.prefIsLoggedIn, value);
   }
 
   // Theme:------------------------------------------------------
   Future<bool> get isDarkMode async {
-    return _getBool(AppStrings.prefIsDarkMode) ?? false;
+    return getBool(AppStrings.prefIsDarkMode) ?? false;
   }
 
   Future<bool> changeMode(bool value) async {
-    return _saveBool(AppStrings.prefIsDarkMode, value);
+    return saveBool(AppStrings.prefIsDarkMode, value);
   }
 
   Future<String?> get getThemeMode async {
-    return Future.value(_getString(AppStrings.prefThemeMode));
+    return Future.value(getString(AppStrings.prefThemeMode));
   }
 
   Future<bool> changeTheme(String value) async {
-    return _saveString(AppStrings.prefThemeMode, value);
+    return saveString(AppStrings.prefThemeMode, value);
   }
 
   Future<String?> get getBrightnessStatus async {
-    return Future.value(_getString(AppStrings.prefBrightnessStatus));
+    return Future.value(getString(AppStrings.prefBrightnessStatus));
   }
 
   Future<bool> changeBrightnessStatus(String value) async {
-    return _saveString(AppStrings.prefBrightnessStatus, value);
+    return saveString(AppStrings.prefBrightnessStatus, value);
   }
 
   // App First launch:---------------------------------------------
   Future<bool> get isFirstLoad async {
-    return Future.value(_getBool(AppStrings.prefIsFirstLoad) ?? true);
+    return Future.value(getBool(AppStrings.prefIsFirstLoad) ?? true);
   }
 
   Future<bool> changeFirstLoadStatus(bool value) async {
-    return await _saveBool(AppStrings.prefIsFirstLoad, value);
+    return await saveBool(AppStrings.prefIsFirstLoad, value);
   }
 
   // Language:---------------------------------------------------
   Future<String?> get currentLanguage async {
-    return _getString(AppStrings.prefCurrentLanguage);
+    return getString(AppStrings.prefCurrentLanguage);
   }
 
   Future<bool> changeLanguage(String language) async {
-    return _saveString(AppStrings.prefCurrentLanguage, language);
+    return saveString(AppStrings.prefCurrentLanguage, language);
   }
 }

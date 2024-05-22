@@ -2,7 +2,7 @@ import 'package:devicelocale/devicelocale.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:maids/core/constants/constants.dart';
-import 'package:maids/core/shared_preferences/hlp_shared_preference.dart';
+import 'package:maids/core/shared_preferences/shared_preference_helper.dart';
 import 'package:maids/core/utils/logger.dart';
 
 ///

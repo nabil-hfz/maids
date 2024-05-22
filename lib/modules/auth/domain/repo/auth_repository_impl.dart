@@ -5,7 +5,7 @@ import 'package:injectable/injectable.dart';
 import 'package:isar/isar.dart';
 import 'package:maids/core/model/result.dart';
 import 'package:maids/core/repository/base_repository.dart';
-import 'package:maids/core/shared_preferences/hlp_shared_preference.dart';
+import 'package:maids/core/shared_preferences/shared_preference_helper.dart';
 import 'package:maids/core/utils/logger.dart';
 import 'package:maids/modules/auth/data/datasource/auth_remote_data_source_impl.dart';
 import 'package:maids/modules/auth/data/requests/sign_in_request_model.dart';

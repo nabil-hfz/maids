@@ -38,7 +38,7 @@ import '../managers/navigation/app_navigator.dart' as _i3;
 import '../managers/network/connection_checker.dart' as _i11;
 import '../managers/network/dio_client.dart' as _i17;
 import '../managers/theme/app_them_manager.dart' as _i15;
-import '../shared_preferences/hlp_shared_preference.dart' as _i13;
+import '../shared_preferences/shared_preference_helper.dart' as _i13;
 import 'module/local_module.dart' as _i25;
 import 'module/network_module.dart' as _i26;
 

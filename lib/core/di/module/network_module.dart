@@ -4,7 +4,7 @@ import 'package:injectable/injectable.dart';
 
 // Project imports:
 import 'package:maids/core/constants/app_endpoints.dart';
-import 'package:maids/core/shared_preferences/hlp_shared_preference.dart';
+import 'package:maids/core/shared_preferences/shared_preference_helper.dart';
 import 'package:maids/core/utils/logger.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
