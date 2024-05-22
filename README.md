@@ -22,6 +22,7 @@ Follow these steps to set up and run the project:
 - **Clone the repository**:
 ```sh
 git clone https://github.com/nabil-hfz/maids.git
+cd <repository-directory>
 ```
 - **Clean the project and fetch dependencies**: 
 ```sh
