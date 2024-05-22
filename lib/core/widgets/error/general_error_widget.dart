@@ -33,6 +33,8 @@ class AppErrorWidget extends StatefulWidget {
       msg = translate.connection_error;
     } else if (msgError is NotFoundDioError) {
       msg = translate.err_todo_with_this_id_not_found;
+    } else if (msgError is NoCacheDataFoundError) {
+      msg = translate.connection_error;
     } else {
       msg = translate.something_went_wrong_please_try_again;
     }

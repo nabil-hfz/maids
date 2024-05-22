@@ -9,7 +9,7 @@ import 'package:maids/core/constants/constants.dart';
 import 'package:maids/core/managers/theme/app_them_manager.dart';
 
 class HeaderItemWidget extends StatelessWidget {
-  const HeaderItemWidget({Key? key, required this.text}) : super(key: key);
+  const HeaderItemWidget({super.key, required this.text});
   final String text;
 
   @override

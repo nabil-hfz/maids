@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:maids/core/constants/colors/app_colors.dart';
 import 'package:maids/core/generated_files/assets/assets.gen.dart';
+import 'package:maids/core/utils/logger.dart';
 import 'package:maids/core/widgets/images/app_image_widget.dart';
 import 'package:maids/core/widgets/loader/app_loading_indicator.dart';
 
@@ -71,10 +72,12 @@ class _ImageNetworkCircleWidgetState extends State<ImageNetworkCircleWidget>
           imageUrl: widget.imageUrl ?? "",
           // httpHeaders: optionsMedia,
           placeholder: (context, url) => placeholderWidget(),
-          errorWidget: (context, url, error) => errorWidget(),
+          errorWidget: (context, url, error) =>
+              errorWidget(context, url, error),
           height: widget.imageHeight,
           width: widget.imageWidth,
           fit: widget.boxFit,
+          useOldImageOnUrlChange: true,
         ),
       ),
     );
@@ -85,14 +88,16 @@ class _ImageNetworkCircleWidgetState extends State<ImageNetworkCircleWidget>
         child: const AppLoader(),
       );
 
-  Widget errorWidget() =>
-      widget.errorWidget ??
-      Container(
-        color: AppColors.appPrimaryColor,
-        child: AppImageWidget(
-          path: Assets.images.appLauncher.path,
-        ),
-      );
+  Widget errorWidget(BuildContext context, String url, Object error) {
+    Logger.error(error, url);
+    return widget.errorWidget ??
+        Container(
+          color: AppColors.appPrimaryColor,
+          child: AppImageWidget(
+            path: Assets.images.appLauncher.path,
+          ),
+        );
+  }
 
   // errorWidget() => Container(
   //       color: widget.imagePlaceHolderBackgroundColor,

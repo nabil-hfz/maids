@@ -167,6 +167,14 @@ class AuthCubit extends BaseCubit<AuthState> {
             ),
           ),
         );
+      } else {
+        emit(
+          state.copyWith(
+            getProfile: LoggedInAlreadySuccess(
+              profile: _profileEntity!,
+            ),
+          ),
+        );
       }
     }
   }

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:isar/isar.dart';
 import 'package:maids/core/model/result.dart';
 import 'package:maids/core/repository/base_repository.dart';
 import 'package:maids/core/shared_preferences/hlp_shared_preference.dart';
@@ -16,12 +17,14 @@ import 'auth_repository_i.dart';
 @Singleton(as: IAuthRepository)
 class ImplAuthRepository extends IAuthRepository {
   final IAuthRemoteDataSource _remoteDataSource;
+  final Isar _db;
 
   final SharedPreferenceHelper _sharedPreferenceHelper;
 
   const ImplAuthRepository(
     this._remoteDataSource,
     this._sharedPreferenceHelper,
+    this._db,
   );
 
   @override
@@ -82,6 +85,7 @@ class ImplAuthRepository extends IAuthRepository {
   Future<bool> logout() async {
     try {
       await _deleteProfileAndToken();
+      _db.writeTxn(() async => await _db.clear());
     } catch (error, stack) {
       Logger.error(error, stack);
     }
@@ -90,7 +94,6 @@ class ImplAuthRepository extends IAuthRepository {
   }
 
   Future<void> _saveProfileAndToken(ProfileModel result) async {
-    print('login result is ${result.token}');
     if (result.token?.isNotEmpty ?? false) {
       await _sharedPreferenceHelper.saveAuthProfile(result);
       await _sharedPreferenceHelper.saveAuthToken(result.token);

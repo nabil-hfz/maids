@@ -1,7 +1,5 @@
 import 'dart:developer' as dev;
 
-import 'package:maids/main.dart';
-
 abstract class Logger {
   static void debug(dynamic value) {
     // if (!isProduction)

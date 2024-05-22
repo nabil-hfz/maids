@@ -29,35 +29,13 @@ class ChangeLanguageDialog extends StatelessWidget {
                   context: context,
                 ),
               )
-              .toList()
-
-          // <Widget>[
-          //   _selectedButton(
-          //     title: AppStrings.arabic,
-          //     langCode: AppStrings.langAr,
-          //     currentValue: appLanguage.appLanguage == AppStrings.langAr,
-          //     themeStore: themeStore,
-          //     appLanguage: appLanguage,
-          //     context: context,
-          //   ),
-          //   const VerticalPadding(percentage: 0.02),
-          //   _selectedButton(
-          //     title: AppStrings.english,
-          //     langCode: AppStrings.langEn,
-          //     currentValue: appLanguage.appLanguage == AppStrings.langEn,
-          //     themeStore: themeStore,
-          //     appLanguage: appLanguage,
-          //     context: context,
-          //   ),
-          // ],
-          ),
+              .toList()),
     );
   }
 
   Widget _selectedButton({
     String? title,
     required String langCode,
-    // required String langFlag,
     bool currentValue = false,
     required AppThemeManager themeStore,
     required AppLanguageManager appLanguage,
@@ -98,7 +76,7 @@ class ChangeLanguageDialog extends StatelessWidget {
         appLanguage.changeLanguage(langCode);
 
         /// return true so the caller will know that the language has been changed.
-        // Navigator.pop(context, true);
+        Navigator.pop(context, true);
       },
       child: Container(
         padding: const EdgeInsets.all(AppDimens.space12),

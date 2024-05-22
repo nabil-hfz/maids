@@ -60,7 +60,6 @@ class _TodoAddEditPageState extends BaseAppState<TodoAddEditPage>
       if (widget.args != null) {
         var type = widget.args?.type;
         var todo = widget.args?.todo;
-        print("todo is $todo");
 
         switch (type) {
           case TodoDetailType.edit:
@@ -113,10 +112,10 @@ class _TodoAddEditPageState extends BaseAppState<TodoAddEditPage>
             buildWhen: (oldState, newState) =>
                 oldState.createTodo != newState.createTodo ||
                 oldState.updateTodo != newState.updateTodo,
-            listener: (context, state) {
+            listener: (ctx, state) {
               if (state.createTodo is BaseSuccessState ||
                   (state.updateTodo is BaseSuccessState)) {
-                navigator.pop();
+                Navigator.of(context).pop();
                 final msg = (_detailViewModel.isAdding)
                     ? translate.added_successfully
                     : translate.updated_successfully;
@@ -255,7 +254,7 @@ class _TodoAddEditPageState extends BaseAppState<TodoAddEditPage>
                           iconColor: appTheme.appColors.iconReversedColor,
                         )
                       : null,
-                  onPressed: isLoading ? () {} : _saveItem,
+                  onPressed: isLoading ? null : _saveItem,
                   text: _detailViewModel.isAdding
                       ? translate.add
                       : translate.update,

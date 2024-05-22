@@ -32,7 +32,7 @@ abstract class BaseAppState<T extends BaseAppStatefulWidget> extends State<T> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     appTheme = context.watch<AppThemeManager>();
-    languageManager = Provider.of<AppLanguageManager>(context);
+    languageManager = context.watch<AppLanguageManager>();
   }
 
   @override

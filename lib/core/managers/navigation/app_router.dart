@@ -14,21 +14,21 @@ import 'package:maids/modules/todos/ui/args/todo_details_args.dart';
 import 'package:maids/modules/todos/ui/pages/todo_add_edit_page.dart';
 import 'package:maids/modules/todos/ui/pages/todos_list_page.dart';
 
-final _parentKey = GlobalKey<NavigatorState>();
+GlobalKey<NavigatorState> navigationKey = GlobalKey();
 
 abstract class AppRouter {
-  static GlobalKey<NavigatorState> get parentKey => _parentKey;
+  static GlobalKey<NavigatorState> get parentKey => navigationKey;
 
   static GoRouter get router => _router;
 
   static final GoRouter _router = GoRouter(
-    navigatorKey: _parentKey,
+    navigatorKey: navigationKey,
     initialLocation: Routes.splash,
     routes: [
       GoRoute(
         path: Routes.splash,
         name: Routes.splash,
-        parentNavigatorKey: _parentKey,
+        parentNavigatorKey: navigationKey,
         pageBuilder: (BuildContext context, GoRouterState state) {
           var navArgs = state.extra as BaseNavigationArg?;
           const child = SplashPage();
@@ -38,7 +38,7 @@ abstract class AppRouter {
       GoRoute(
         name: Routes.logInPage,
         path: Routes.logInPage,
-        parentNavigatorKey: _parentKey,
+        parentNavigatorKey: navigationKey,
         pageBuilder: (BuildContext context, GoRouterState state) {
           var navArgs = state.extra as BaseNavigationArg?;
           Widget child = const LoginPage();
@@ -69,7 +69,7 @@ abstract class AppRouter {
                   GoRoute(
                     name: Routes.todoAddEditPage,
                     path: Routes.todoAddEditPage,
-                    parentNavigatorKey: _parentKey,
+                    parentNavigatorKey: navigationKey,
                     pageBuilder: (BuildContext context, GoRouterState state) {
                       var navArgs = state.extra as BaseNavigationArg?;
                       var args = navArgs?.data as TodoDetailsArgs?;

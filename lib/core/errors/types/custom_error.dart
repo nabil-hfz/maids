@@ -6,7 +6,6 @@ class CustomError extends BaseError {
   const CustomError._({super.message});
 
   factory CustomError.specific({String? message}) {
-    print('object is ${message?.contains(MSGCustomError.msgTodoNotFound)}');
     if (message == MSGCustomError.msgNotValidUserNameOrPassword) {
       return const NotValidUserNameOrPasswordError();
     } else if (message == MSGCustomError.msgUserIdIsRequired) {

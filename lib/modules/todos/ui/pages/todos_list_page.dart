@@ -11,13 +11,12 @@ import 'package:maids/core/widgets/buttons/app_floating_action_button.dart';
 import 'package:maids/core/widgets/error/general_error_widget.dart';
 import 'package:maids/core/widgets/general/base_stateful_app_widget.dart';
 import 'package:maids/core/widgets/general/maids_app_bar.dart';
+import 'package:maids/core/widgets/general/no_data_found_widget.dart';
 import 'package:maids/core/widgets/general/refresh_wrapper.dart';
 import 'package:maids/modules/todos/domain/blocs/todo_cubit.dart';
 import 'package:maids/modules/todos/ui/args/todo_details_args.dart';
-import 'package:maids/modules/todos/ui/controllers/todos_list_viewmodel.dart';
 import 'package:maids/modules/todos/ui/widgets/todo_item_widget.dart';
 import 'package:maids/modules/todos/ui/widgets/todo_list_loader_widget.dart';
-import 'package:provider/provider.dart';
 import 'package:rxdart/rxdart.dart';
 
 enum TodoDetailType { add, edit }
@@ -31,33 +30,11 @@ class TodosListPage extends BaseAppStatefulWidget {
 
 class _TodosPageState extends BaseAppState<TodosListPage> {
   late final TodoCubit _todoBloc = getIt<TodoCubit>();
-  late TodosListViewModel _todosListViewModel;
   final BehaviorSubject<RefreshControllerHandler> _refreshController =
       BehaviorSubject();
 
   @override
-  void initState() {
-    super.initState();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _todosListViewModel = Provider.of<TodosListViewModel>(
-        context,
-        listen: false,
-      );
-    });
-
-    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-    //   _todosListViewModel.reset();
-    // });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    _todosListViewModel = Provider.of<TodosListViewModel>(
-      context,
-      listen: true,
-    );
-
     return Scaffold(
       appBar: MaidsAppBar(
         centerTitle: true,
@@ -112,11 +89,16 @@ class _TodosPageState extends BaseAppState<TodosListPage> {
     }
     if (todosState is TodosSuccess) {
       final todos = todosState.todos;
-      return ListView.builder(
-        itemCount: todos.length,
-        itemBuilder: (context, index) {
-          return TodoItemWidget(todo: todos.elementAt(index));
-        },
+      if (todos.isNotEmpty) {
+        return ListView.builder(
+          itemCount: todos.length,
+          itemBuilder: (context, index) {
+            return TodoItemWidget(todo: todos.elementAt(index));
+          },
+        );
+      }
+      return NoDataFoundWidget(
+        message: translate.no_data_found_please_check_your_internet_connection,
       );
     }
     return const TodoListLoaderWidget();
@@ -127,7 +109,6 @@ class _TodosPageState extends BaseAppState<TodosListPage> {
       cancelToken: cancelToken,
       isRefresh: true,
       controller: controller,
-      filter: _todosListViewModel.todoFilterModel,
     );
   }
 
@@ -135,7 +116,6 @@ class _TodosPageState extends BaseAppState<TodosListPage> {
     return _todoBloc.getTodos(
       cancelToken: cancelToken,
       controller: controller,
-      filter: _todosListViewModel.todoFilterModel,
     );
   }
 }

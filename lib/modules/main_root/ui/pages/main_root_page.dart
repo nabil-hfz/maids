@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_adaptive_scaffold/flutter_adaptive_scaffold.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:maids/core/constants/app_icon_size.dart';
 import 'package:maids/core/constants/colors/app_colors.dart';
 import 'package:maids/core/generated_files/assets/assets.gen.dart';
 import 'package:maids/core/managers/localization/app_translation.dart';
-import 'package:maids/core/managers/theme/app_them_manager.dart';
+import 'package:maids/core/managers/localization/generated/l10n.dart';
+import 'package:maids/core/utils/app_utils.dart';
+import 'package:maids/core/widgets/general/base_stateful_app_widget.dart';
 import 'package:maids/core/widgets/images/app_image_widget.dart';
 
 enum CurrentTab { home, more }
 
-class MainRootPage extends StatefulWidget {
+class MainRootPage extends BaseAppStatefulWidget {
   const MainRootPage({
     required this.navigationShell,
     Key? key,
@@ -21,23 +23,14 @@ class MainRootPage extends StatefulWidget {
   final StatefulNavigationShell navigationShell;
 
   @override
-  State<StatefulWidget> createState() => _MainRootPageState();
+  _MainRootPageState createBaseState() => _MainRootPageState();
 }
 
-class _MainRootPageState extends State<MainRootPage> {
-  late AppThemeManager _appTheme;
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {});
-  }
-
+class _MainRootPageState extends BaseAppState<MainRootPage> {
   @override
   Widget build(BuildContext context) {
-    _appTheme = context.watch<AppThemeManager>();
     return PopScope(
-      canPop: _canPop,
+      canPop: false,
       onPopInvoked: _onWillPop,
       child: AdaptiveScaffold(
         smallBreakpoint: const WidthPlatformBreakpoint(end: 700),
@@ -54,7 +47,6 @@ class _MainRootPageState extends State<MainRootPage> {
   }
 
   void onTap(index) {
-    print('index is ${index}');
     widget.navigationShell.goBranch(
       index,
       initialLocation: index == widget.navigationShell.currentIndex,
@@ -65,11 +57,11 @@ class _MainRootPageState extends State<MainRootPage> {
     return [
       _buildNavigationDestination(
         Assets.icons.home.path,
-        translate.home,
+        Translations.of(context).home,
       ),
       _buildNavigationDestination(
         Assets.icons.more.path,
-        translate.more,
+        Translations.of(context).more,
       ),
     ];
   }
@@ -84,7 +76,7 @@ class _MainRootPageState extends State<MainRootPage> {
       tooltip: title,
       icon: AppImageWidget(
         path: imagePath,
-        color: _appTheme.appColors.iconGreyColor,
+        color: appTheme.appColors.iconGreyColor,
         height: AppIconSize.size_18,
         width: AppIconSize.size_18,
         boxFit: BoxFit.contain,
@@ -99,15 +91,34 @@ class _MainRootPageState extends State<MainRootPage> {
     );
   }
 
-  get _canPop {
+  DateTime? currentTime;
+
+  bool get isInHomePage {
     return widget.navigationShell.currentIndex == CurrentTab.home.index;
   }
 
-  Future<bool> _onWillPop(_) {
-    bool isHome = widget.navigationShell.currentIndex == CurrentTab.home.index;
-    if (!isHome) {
-      onTap(CurrentTab.home.index);
+  bool isPressedInLessThanTwoSeconds() {
+    final now = DateTime.now();
+    return currentTime == null ||
+        now.difference(currentTime!).inMilliseconds > 2000;
+  }
+
+  void _onWillPop(didPop) async {
+    if (didPop) {
+      return;
     }
-    return Future.value(isHome);
+    DateTime now = DateTime.now();
+    if (!isInHomePage) {
+      onTap(CurrentTab.home.index);
+    } else if (currentTime == null ||
+        now.difference(currentTime!).inMilliseconds > 2000) {
+      //add duration of press gap
+      currentTime = now;
+      setState(() {});
+      AppUtils.showToast(message: translate.press_again_to_exit);
+    } else {
+      SystemNavigator.pop();
+      // exit(0);
+    }
   }
 }

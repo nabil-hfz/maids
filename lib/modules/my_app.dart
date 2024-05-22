@@ -7,10 +7,9 @@ import 'package:maids/core/di/di.dart';
 import 'package:maids/core/managers/localization/app_language.dart';
 import 'package:maids/core/managers/localization/generated/l10n.dart';
 import 'package:maids/core/managers/theme/app_them_manager.dart';
+import 'package:maids/core/utils/logger.dart';
 import 'package:maids/modules/todos/ui/controllers/todo_detail_viewmodel.dart';
 import 'package:provider/provider.dart';
-
-import 'todos/ui/controllers/todos_list_viewmodel.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key, required this.appName});
@@ -51,12 +50,12 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
             ChangeNotifierProvider(create: (_) => _appLanguageManager),
             ChangeNotifierProvider(create: (_) => _appTheme),
             ChangeNotifierProvider(
-                create: (_) => findDep<TodosListViewModel>()),
-            ChangeNotifierProvider(
-                create: (_) => findDep<TodoDetailViewModel>()),
+              create: (_) => findDep<TodoDetailViewModel>(),
+            ),
           ],
           child: Consumer<AppLanguageManager>(
             builder: (context, appLanguage, child) {
+              Logger.debug('appLanguage is ${appLanguage.appLanguage}');
               return Consumer<AppThemeManager>(
                 builder: (context, appTheme, _) {
                   return MaterialApp.router(
@@ -98,8 +97,10 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
   @override
   void dispose() {
-    _appTheme.disposeManager();
-    _appLanguageManager.disposeManager();
+    closeDb();
+    disposeAllControllers();
+    closeAllBlocs();
+    disposeAllManagers();
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }

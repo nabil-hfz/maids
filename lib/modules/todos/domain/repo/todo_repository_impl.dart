@@ -10,6 +10,7 @@ import 'package:maids/core/managers/network/connection_checker.dart';
 import 'package:maids/core/model/base_filter.dart';
 import 'package:maids/core/model/result.dart';
 import 'package:maids/core/repository/base_repository.dart';
+import 'package:maids/core/utils/logger.dart';
 import 'package:maids/modules/todos/data/datasource/todo_local_data_source_impl.dart';
 import 'package:maids/modules/todos/data/datasource/todo_remote_data_source_impl.dart';
 import 'package:maids/modules/todos/domain/entity/todo_entity.dart';
@@ -33,13 +34,21 @@ class ImplTodoRepository extends ITodoRepository {
     required BaseFilter filter,
     CancelToken? cancelToken,
   }) async {
-    final result = await _remoteDataSource.getTodos(
-      cancelToken: cancelToken,
-      filter: filter,
-    );
-    return BaseRepository.execute(
-      remoteResult: result,
-    );
+    if (!(await _connectionChecker.hasConnection())) {
+      return BaseRepository.execute(
+        remoteResult: await _localDataSource.getTodos(filter: filter),
+      );
+    } else {
+      final result = await _remoteDataSource.getTodos(
+        cancelToken: cancelToken,
+        filter: filter,
+      );
+      var res = await _localDataSource.saveTodos(todos: result);
+      Logger.debug('Result of saving todos is $res');
+      return BaseRepository.execute(
+        remoteResult: result,
+      );
+    }
   }
 
   @override
@@ -51,6 +60,10 @@ class ImplTodoRepository extends ITodoRepository {
       cancelToken: cancelToken,
       todo: todo.toModel(),
     );
+    if (result.hasDataOnly) {
+      await _localDataSource.saveTodo(todo: result);
+    }
+
     return BaseRepository.execute(remoteResult: result);
   }
 
@@ -63,6 +76,11 @@ class ImplTodoRepository extends ITodoRepository {
       cancelToken: cancelToken,
       id: id,
     );
+    if (result.hasDataOnly) {
+      var res = await _localDataSource.deleteTodo(id: id);
+      Logger.debug('Result of deleting todo is $res');
+    }
+
     return BaseRepository.execute(remoteResult: result);
   }
 
@@ -75,6 +93,7 @@ class ImplTodoRepository extends ITodoRepository {
       cancelToken: cancelToken,
       id: id,
     );
+
     return BaseRepository.execute(remoteResult: result);
   }
 
@@ -87,6 +106,8 @@ class ImplTodoRepository extends ITodoRepository {
       cancelToken: cancelToken,
       todo: todo.toModel(),
     );
+    var res = await _localDataSource.saveTodo(todo: result);
+    Logger.debug('Result of saving todo is $res');
     return BaseRepository.execute(remoteResult: result);
   }
 }

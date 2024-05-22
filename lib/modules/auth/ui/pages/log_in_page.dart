@@ -20,15 +20,13 @@ import 'package:maids/core/widgets/buttons/app_inkwell_widget.dart';
 import 'package:maids/core/widgets/buttons/bouncing_button.dart';
 import 'package:maids/core/widgets/dialogs/change_language_dailog.dart';
 import 'package:maids/core/widgets/error/general_error_widget.dart';
-import 'package:maids/core/widgets/general/app_checkbok.dart';
 import 'package:maids/core/widgets/general/base_stateful_app_widget.dart';
 import 'package:maids/core/widgets/general/horizontal_padding.dart';
-import 'package:maids/core/widgets/general/maids_app_bar.dart';
 import 'package:maids/core/widgets/general/vertical_padding.dart';
 import 'package:maids/core/widgets/images/app_image_widget.dart';
 import 'package:maids/core/widgets/loader/app_loading_indicator.dart';
-import 'package:maids/core/widgets/mixins/username_mixin.dart';
 import 'package:maids/core/widgets/mixins/password_form_mixin.dart';
+import 'package:maids/core/widgets/mixins/username_mixin.dart';
 import 'package:maids/modules/auth/data/requests/sign_in_request_model.dart';
 import 'package:maids/modules/auth/domain/blocs/auth_cubit.dart';
 import 'package:maids/modules/auth/ui/widgets/app_title_header.dart';
@@ -44,15 +42,15 @@ class _LoginPageState extends BaseAppState<LoginPage>
     with UsernameFormMixin, PasswordFormMixin {
   late AuthCubit _cubit;
 
-  bool _rememberMe = true;
+  final bool _rememberMe = true;
 
   @override
   void initState() {
     super.initState();
     _cubit = findDep<AuthCubit>();
 
-    setUserNameText = "atuny0";
-    setPasswordText = "9uQFF1Lh";
+    // setUserNameText = "atuny0";
+    // setPasswordText = "9uQFF1Lh";
   }
 
   @override
@@ -112,7 +110,7 @@ class _LoginPageState extends BaseAppState<LoginPage>
                             VerticalTextPadding.with16(),
                             _passwordTextField(),
                             VerticalTextPadding.with16(),
-                            _rememberMeForgetPasswordWidget(),
+                            // _rememberMeForgetPasswordWidget(),
                             VerticalTextPadding.with32(),
                             _buildLoginButton(context),
                             VerticalTextPadding.with40(),
@@ -165,35 +163,6 @@ class _LoginPageState extends BaseAppState<LoginPage>
     return buildPasswordFieldMixin(
       header: translate.password,
       hintText: translate.enter_your_password,
-    );
-  }
-
-  Widget _rememberMeForgetPasswordWidget() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Flexible(
-          child: AppCheckBox(
-            value: _rememberMe,
-            onChanged: (newValue) {
-              _rememberMe = newValue;
-              setState(() {});
-            },
-            title: translate.remember_me,
-          ),
-        ),
-        // TextButton(
-        //   onPressed: () {
-        //     navigator.pushNamed(Routes.forgetPasswordPage);
-        //   },
-        //   child: Text(
-        //     translate.forgot_password_question_mark,
-        //     style: appTextStyle.regular14.copyWith(
-        //       color: appTheme.appColors.textActiveColor,
-        //     ),
-        //   ),
-        // ),
-      ],
     );
   }
 

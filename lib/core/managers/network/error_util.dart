@@ -19,7 +19,6 @@ class ErrorUtil {
   /// indicate that is error is happening on the side of the application
   /// regardless of how this is produced..
   static BaseError handleError(dynamic error, dynamic stack) {
-    print("Nabil $error");
     Logger.error(error, stack);
 
     String? defaultError;
@@ -91,10 +90,6 @@ class ErrorUtil {
     } catch (error, stack) {
       Logger.error(error, stack);
     }
-    print('_handleDioResponseError '
-        'statusCode is $statusCode, '
-        'message is $message, '
-        'error is $error');
     switch (statusCode) {
       case 400:
       case 403:

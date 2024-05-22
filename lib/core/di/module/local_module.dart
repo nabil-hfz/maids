@@ -5,7 +5,6 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:isar/isar.dart';
-import 'package:maids/main.dart';
 import 'package:maids/modules/todos/data/models/todo_model.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -46,7 +45,7 @@ abstract class LocalModule {
     return await Isar.open(
       [TodoModelSchema],
       directory: dir.path,
-      inspector: !isRelease,
+      // inspector: !isRelease,
     );
   }
 }

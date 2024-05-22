@@ -44,16 +44,4 @@ class ProfileModel extends BaseModel<ProfileEntity> {
       token: token ?? '',
     );
   }
-
-  @override
-  List<Object?> get props => [
-        id,
-        username,
-        email,
-        firstName,
-        lastName,
-        gender,
-        image,
-        token,
-      ];
 }

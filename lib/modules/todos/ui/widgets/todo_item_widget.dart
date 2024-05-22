@@ -42,9 +42,6 @@ class TodoItemWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: appTheme.appColors.cardBGColor,
         borderRadius: BorderRadius.circular(cardRadius),
-        boxShadow: [
-          // AppBoxShadow.todoNewShadow,
-        ],
       ),
       margin: margin ??
           const EdgeInsets.symmetric(
@@ -100,9 +97,9 @@ class TodoItemWidget extends StatelessWidget {
                           children: [
                             AppImageWidget(
                               path: Assets.images.splashLogoPng.path,
-                              boxFit: BoxFit.cover,
-                              height: 64,
-                              width: 64,
+                              boxFit: BoxFit.contain,
+                              height: 120,
+                              width: 90,
                             ),
                             HorizontalTextPadding.with12(),
                             Expanded(
@@ -154,7 +151,7 @@ class TodoItemWidget extends StatelessWidget {
         Expanded(
           child: Text(
             todo.todo ?? "",
-            maxLines: 3,
+            maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: appTextStyle.medium14.copyWith(
               color: appTheme.appColors.textColor,

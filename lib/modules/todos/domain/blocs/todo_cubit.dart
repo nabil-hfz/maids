@@ -49,7 +49,7 @@ class TodoCubit extends BaseCubit<TodoState> {
       filter: _todosFilter,
     );
 
-    controller?.handleList(results.data!.items);
+    controller?.handleList(results.data?.items);
     if (results.hasDataOnly) {
       _todosFilter = _todosFilter.copyWith(skip: _todosFilter.skip + 1);
       if (isRefresh) _todos.clear();
@@ -115,7 +115,6 @@ class TodoCubit extends BaseCubit<TodoState> {
     if (result.hasDataOnly) {
       emit(state.copyWith(createTodo: const BaseSuccessState()));
       final resultTodo = result.data!;
-      print('resultTodo is $resultTodo');
       _addTodoListLocally(resultTodo);
     } else {
       emit(

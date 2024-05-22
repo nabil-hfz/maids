@@ -969,6 +969,46 @@ class Translations {
       args: [],
     );
   }
+
+  /// `Press again, to exit`
+  String get press_again_to_exit {
+    return Intl.message(
+      'Press again, to exit',
+      name: 'press_again_to_exit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Whoops!!`
+  String get whoops_info {
+    return Intl.message(
+      'Whoops!!',
+      name: 'whoops_info',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Result Found`
+  String get no_result_found {
+    return Intl.message(
+      'No Result Found',
+      name: 'no_result_found',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No data found. Please check your internet connection`
+  String get no_data_found_please_check_your_internet_connection {
+    return Intl.message(
+      'No data found. Please check your internet connection',
+      name: 'no_data_found_please_check_your_internet_connection',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<Translations> {

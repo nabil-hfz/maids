@@ -25,23 +25,28 @@ class CustomSwitch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppThemeManager themeStore = Provider.of<AppThemeManager>(context);
-    var tween = TimelineTween<_SwitchBoxProps>()
-      ..add(_SwitchBoxProps.paddingLeft, 0.0.tweenTo(60.0), 1.seconds)
-      ..add(
+    var tween = MovieTween()
+      ..scene(duration: 1.seconds)
+          .tween(_SwitchBoxProps.paddingLeft, 0.0.tweenTo(60.0))
+      ..scene(duration: 1.seconds).tween(
         _SwitchBoxProps.color,
-        themeStore.appColors.iconColor.tweenTo(
-          themeStore.appColors.iconColor,
-        ),
-        1.seconds,
+        themeStore.appColors.iconColor.tweenTo(themeStore.appColors.iconColor),
       )
-      ..add(_SwitchBoxProps.text, ConstantTween(labelOff), 500.milliseconds)
-      ..add(_SwitchBoxProps.text, ConstantTween(labelOn), 500.milliseconds)
-      ..add(_SwitchBoxProps.rotation, (-2 * pi).tweenTo(0.0), 1.seconds);
+      ..scene(duration: 500.milliseconds).tween(
+        _SwitchBoxProps.text,
+        ConstantTween(labelOff),
+      )
+      ..scene(begin: 500.milliseconds, end: 1.seconds).tween(
+        _SwitchBoxProps.text,
+        ConstantTween(labelOn),
+      )
+      ..scene(duration: 1.seconds).tween(
+        _SwitchBoxProps.rotation,
+        (-2 * pi).tweenTo(0.0),
+      );
 
-    return CustomAnimation<MultiTweenValues<_SwitchBoxProps>>(
-      control: switched
-          ? CustomAnimationControl.play
-          : CustomAnimationControl.playReverse,
+    return CustomAnimationBuilder<Movie>(
+      control: switched ? Control.play : Control.playReverse,
       startPosition: switched ? 1.0 : 0.0,
       duration: tween.duration * 1.2,
       tween: tween,
@@ -51,9 +56,9 @@ class CustomSwitch extends StatelessWidget {
   }
 
   Widget _buildSwitchBox(
-    context,
-    child,
-    MultiTween<_SwitchBoxProps> value,
+    BuildContext context,
+    Movie value,
+    Widget? child,
   ) {
     AppThemeManager themeStore = Provider.of<AppThemeManager>(context);
     final isRtl = Directionality.of(context) == TextDirection.rtl;
@@ -73,9 +78,8 @@ class CustomSwitch extends StatelessWidget {
               child: Transform.rotate(
                 angle: value.get(_SwitchBoxProps.rotation),
                 child: Container(
-                  decoration: _innerBoxDecoration(
-                    value.get(_SwitchBoxProps.color),
-                  ),
+                  decoration:
+                      _innerBoxDecoration(value.get(_SwitchBoxProps.color)),
                   width: 30,
                   child: Center(
                     child: Text(
@@ -84,7 +88,7 @@ class CustomSwitch extends StatelessWidget {
                         height: 1.3,
                         fontWeight: FontWeight.bold,
                         fontSize: AppTextSize.size_12,
-                        color: themeStore.appColors.textWhiteColor,
+                        color: themeStore.appColors.textReversedColor,
                       ),
                     ),
                   ),

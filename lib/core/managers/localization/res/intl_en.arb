@@ -118,6 +118,9 @@
   "complete_todo": "Complete Todo",
   "delete_todo": "Delete Todo",
   "updating": "Updating",
-  "light_mode": "Light mode"
-
+  "light_mode": "Light mode",
+  "press_again_to_exit": "Press again, to exit",
+  "whoops_info": "Whoops!!",
+  "no_result_found": "No Result Found",
+  "no_data_found_please_check_your_internet_connection": "No data found. Please check your internet connection"
 }

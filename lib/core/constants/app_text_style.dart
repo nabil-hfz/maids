@@ -1,5 +1,7 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:maids/core/utils/app_utils.dart';
 
 // Project imports:
 import 'constants.dart';
@@ -520,69 +522,16 @@ class AppTextStyle {
     fontStyle: FontStyle.italic,
     color: AppColors.black,
   );
-
-//========================subBig======================================
-//
-// final subBigTSBasic = const TextStyle(
-//
-//   fontSize: AppTextSize.subBig20,
-//   color: AppColors.black,
-// );
-//
-// //========================normal======================================
-//
-// final normalTSBasic = const TextStyle(
-//
-//   fontSize: AppTextSize.normal18,
-//   color: AppColors.black,
-// );
-//
-// //=========================middle======================================
-//
-// final middleTSBasic = const TextStyle(
-//
-//   fontSize: AppTextSize.middle16,
-//   color: AppColors.black,
-// );
-//
-// //=========================small======================================
-//
-// final smallTSBasic = const TextStyle(
-//
-//   fontSize: AppTextSize.small15,
-//   color: AppColors.black,
-// );
-//
-// //========================min======================================
-// final minTSBasic = const TextStyle(
-//
-//   fontSize: AppTextSize.min,
-//   color: AppColors.black,
-// );
-//
-// //========================sub-min======================================
-//
-// final subMinTSBasic = const TextStyle(
-//
-//   fontSize: AppTextSize.subMin,
-//   color: AppColors.black,
-// );
-//
-// //========================sub-2-min======================================
-//
-// final sub2MinTSBasic = const TextStyle(
-//
-//   fontSize: AppTextSize.sub2Min,
-//   color: AppColors.black,
-// );
-//
-// //========================sub-3-min======================================
-//
-// final sub3MinTSBasic = const TextStyle(
-//
-//   fontSize: AppTextSize.sub3Min,
-//   color: AppColors.black,
-// );
+  TextStyle get welcomeStyle => AppUtils.languagePlatform(
+        english: GoogleFonts.whisper(
+          fontWeight: AppFontWeight.bold,
+          fontSize: AppTextSize.size_24,
+        ),
+        arabic: GoogleFonts.lemonada(
+          fontWeight: AppFontWeight.semiBold,
+          fontSize: AppTextSize.size_16,
+        ),
+      );
 }
 
 AppTextStyle appTextStyle = AppTextStyle();

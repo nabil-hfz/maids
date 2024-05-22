@@ -2,8 +2,6 @@ import 'package:devicelocale/devicelocale.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:maids/core/constants/constants.dart';
-import 'package:maids/core/di/di.dart';
-import 'package:maids/core/managers/navigation/nav_routes.dart';
 import 'package:maids/core/shared_preferences/hlp_shared_preference.dart';
 import 'package:maids/core/utils/logger.dart';
 
@@ -60,7 +58,6 @@ class AppLanguageManager extends ChangeNotifier {
   }
 
   void changeLanguage(String langCode) async {
-    bool isLanguageChanged = false;
     if (_langCode == langCode) {
       return;
     }
@@ -70,13 +67,7 @@ class AppLanguageManager extends ChangeNotifier {
     _langCode = language.code;
     _appLocale = Locale(language.code);
     _sharedPreference.changeLanguage(_langCode);
-    // appUtils.setLang(_langCode);
-    isLanguageChanged = true;
-
-    if (isLanguageChanged) {
-      notifyListeners();
-      navigator.pushNamedAndRemoveUntil(Routes.splash);
-    }
+    notifyListeners();
   }
 
   Future<String> getDeviceLang() async {

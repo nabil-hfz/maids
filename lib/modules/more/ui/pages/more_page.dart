@@ -16,14 +16,13 @@ import 'package:maids/core/widgets/dialogs/change_language_dailog.dart';
 import 'package:maids/core/widgets/dialogs/logout_dailog.dart';
 import 'package:maids/core/widgets/error/general_error_widget.dart';
 import 'package:maids/core/widgets/general/base_stateful_app_widget.dart';
-import 'package:maids/core/widgets/general/horizontal_padding.dart';
+import 'package:maids/core/widgets/general/maids_app_bar.dart';
 import 'package:maids/core/widgets/general/vertical_padding.dart';
+import 'package:maids/core/widgets/icons/custom_switch.dart';
 import 'package:maids/core/widgets/images/app_image_widget.dart';
 import 'package:maids/core/widgets/loader/app_loading_indicator.dart';
 import 'package:maids/modules/auth/domain/blocs/auth_cubit.dart';
-import 'package:provider/provider.dart';
-
-import '../../../../core/widgets/icons/custom_switch.dart';
+import 'package:maids/modules/auth/domain/entity/profile_entity.dart';
 
 class MorePage extends BaseAppStatefulWidget {
   const MorePage({super.key});
@@ -39,7 +38,6 @@ class _MorePageState extends BaseAppState<MorePage> {
   void initState() {
     super.initState();
     _cubit = findDep<AuthCubit>();
-    _cubit.getProfile();
   }
 
   @override
@@ -48,9 +46,10 @@ class _MorePageState extends BaseAppState<MorePage> {
     double height = DeviceUtils.getScaledHeight(context, 1);
     return Scaffold(
       backgroundColor: appTheme.appColors.scaffoldBgColor,
-      appBar: AppBar(
+      appBar: MaidsAppBar(
+        title: translate.more,
+        centerTitle: true,
         automaticallyImplyLeading: false,
-        backgroundColor: appTheme.appColors.splashAppBarColor,
       ),
       body: SafeArea(
         child: SizedBox(
@@ -70,56 +69,53 @@ class _MorePageState extends BaseAppState<MorePage> {
       builder: (context, state) {
         final profileState = state.getProfile;
         if (profileState is LoggedInAlreadySuccess) {
+          final profile = profileState.profile;
+          final switcher = SizedBox(
+            width: 58,
+            height: 45,
+            child: FittedBox(
+              child: GestureDetector(
+                onTap: () {
+                  _toggle(appTheme);
+                },
+                child: CustomSwitch(
+                  switched: appTheme.isDarkMode,
+                ),
+              ),
+            ),
+          );
+          final language = Text(
+            languageManager.getLangLabel(),
+            style: appTextStyle.light12.copyWith(
+              color: appTheme.appColors.textColor,
+            ),
+          );
           return Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              AppImageWidget(
-                path: profileState.profile.image,
-                height: 100,
-                width: 100,
-                borderRadius: AppRadius.radius100,
+              VerticalTextPadding.with24(),
+              _buildImage(profile),
+              VerticalTextPadding.with12(),
+              Text(
+                profile.fullName,
+                style: appTextStyle.welcomeStyle.copyWith(
+                  color: appTheme.appColors.textActiveColor,
+                ),
               ),
               VerticalTextPadding.with24(),
-              ListTile(
-                horizontalTitleGap: AppDimens.space8,
-                leading: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: AppDimens.space8,
-                  ),
-                  child: AppImageWidget(
-                    path: Assets.icons.termsService.path,
-                    width: AppIconSize.size_24,
-                    height: AppIconSize.size_24,
-                    color: appTheme.appColors.iconColor,
-                  ),
-                ),
-                title: Text(
-                  appTheme.isDarkMode
-                      ? translate.dark_mode
-                      : translate.light_mode,
-                  style: appTextStyle.regular14.copyWith(
-                    color: appTheme.appColors.textColor,
-                  ),
-                ),
-                trailing: SizedBox(
-                  width: 65,
-                  height: 45,
-                  child: FittedBox(
-                    child: GestureDetector(
-                      onTap: () {
-                        _toggle(appTheme);
-                      },
-                      child: CustomSwitch(
-                        switched: appTheme.isDarkMode,
-                      ),
-                    ),
-                  ),
-                ),
+              _buildItem(
+                profile,
+                Assets.icons.termsService.path,
+                appTheme.isDarkMode
+                    ? translate.dark_mode
+                    : translate.light_mode,
+                trailing: switcher,
               ),
-              buildListTile(
-                context: context,
-                icon: Assets.icons.language.path,
-                title: translate.language,
-                trailing: languageManager.getLangLabel(),
+              _buildItem(
+                profile,
+                Assets.icons.language.path,
+                translate.language,
+                trailing: language,
                 onTap: () {
                   AppUtils.appShowDialog(
                     context: context,
@@ -129,27 +125,13 @@ class _MorePageState extends BaseAppState<MorePage> {
                   );
                 },
               ),
-              ListTile(
+              _buildItem(
+                profile,
+                Assets.icons.logout.path,
+                translate.log_out,
                 onTap: () {
                   _logoutAction(context: context);
                 },
-                title: Row(
-                  children: [
-                    AppImageWidget(
-                      path: Assets.icons.logout.path,
-                      borderRadius: AppRadius.radius100,
-                      width: 28,
-                      height: 28,
-                    ),
-                    HorizontalTextPadding.with8(),
-                    Text(
-                      translate.log_out,
-                      style: appTextStyle.semiBold16.copyWith(
-                        color: appTheme.appColors.textColor,
-                      ),
-                    ),
-                  ],
-                ),
               ),
             ],
           );
@@ -168,7 +150,6 @@ class _MorePageState extends BaseAppState<MorePage> {
         bloc: _cubit,
         listener: (context, state) {
           if (state.logout is BaseSuccessState) {
-            // clearAndResetAllControllers();
             while (context.canPop()) {
               context.pop();
             }
@@ -189,49 +170,51 @@ class _MorePageState extends BaseAppState<MorePage> {
     );
   }
 
-  Widget buildListTile({
-    required BuildContext context,
-    required String icon,
-    required String title,
-    String? trailing,
-    required Function() onTap,
-  }) {
-    AppThemeManager themeStore = Provider.of<AppThemeManager>(context);
-    return ListTile(
-      horizontalTitleGap: AppDimens.space8,
-      // contentPadding: EdgeInsets.zero,
-      leading: Container(
-        padding: const EdgeInsets.symmetric(horizontal: AppDimens.space8),
-        child: AppImageWidget(
-          path: icon,
-          width: AppIconSize.size_24,
-          height: AppIconSize.size_24,
-          color: themeStore.appColors.iconColor,
-        ),
-      ),
-      title: Text(
-        title,
-        style: appTextStyle.regular12.copyWith(
-          color: themeStore.appColors.headerTextFieldColor,
-        ),
-      ),
-      trailing: trailing != null
-          ? Text(
-              trailing,
-              style: appTextStyle.regular12.copyWith(
-                color: themeStore.appColors.headerTextFieldColor,
-              ),
-            )
-          : null,
-      onTap: onTap,
-    );
-  }
-
   void _toggle(AppThemeManager themeStore) {
     if (themeStore.isDarkMode) {
       themeStore.toggleTheme(ThemeMode.light);
     } else {
       themeStore.toggleTheme(ThemeMode.dark);
     }
+  }
+
+  Widget _buildImage(ProfileEntity profile) {
+    return AppImageWidget(
+      path: profile.image,
+      height: 100,
+      width: 100,
+      borderRadius: AppRadius.radius100,
+    );
+  }
+
+  Widget _buildItem(
+    ProfileEntity profile,
+    String icon,
+    String text, {
+    Widget? trailing,
+    Function()? onTap,
+  }) {
+    return ListTile(
+      onTap: onTap,
+      horizontalTitleGap: AppDimens.space8,
+      leading: Container(
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppDimens.space8,
+        ),
+        child: AppImageWidget(
+          path: icon,
+          width: AppIconSize.size_24,
+          height: AppIconSize.size_24,
+          color: appTheme.appColors.iconColor,
+        ),
+      ),
+      title: Text(
+        text,
+        style: appTextStyle.regular14.copyWith(
+          color: appTheme.appColors.textColor,
+        ),
+      ),
+      trailing: trailing,
+    );
   }
 }

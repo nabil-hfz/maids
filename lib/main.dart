@@ -33,6 +33,7 @@ Future<void> main() async {
     await setPreferredOrientations();
 
     FlutterError.onError = (errorDetails) {
+      Logger.debug("FlutterError error");
       Logger.error(
         errorDetails.exception,
         errorDetails.stack,
@@ -41,6 +42,7 @@ Future<void> main() async {
     };
 
     PlatformDispatcher.instance.onError = (error, stack) {
+      Logger.debug("PlatformDispatcher error");
       Logger.error(error, stack);
       return true;
     };
@@ -48,6 +50,7 @@ Future<void> main() async {
     await findDep<AppLanguageManager>().fetchLocale();
     runApp(const MyApp(appName: AppStrings.appName));
   }, (error, stack) {
+    Logger.debug("runZonedGuarded error");
     Logger.error(error, stack);
   });
 }

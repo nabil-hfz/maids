@@ -119,14 +119,21 @@ class MessageLookup extends MessageLookupByLibrary {
         "min_characters_count": m0,
         "more": MessageLookupByLibrary.simpleMessage("More"),
         "new_account": MessageLookupByLibrary.simpleMessage("New account?"),
+        "no_data_found_please_check_your_internet_connection":
+            MessageLookupByLibrary.simpleMessage(
+                "No data found. Please check your internet connection"),
         "no_more_data_text":
             MessageLookupByLibrary.simpleMessage("No more data"),
+        "no_result_found":
+            MessageLookupByLibrary.simpleMessage("No Result Found"),
         "notifications_settings":
             MessageLookupByLibrary.simpleMessage("Notifications settings"),
         "optional": MessageLookupByLibrary.simpleMessage("Optional"),
         "or_continue_with":
             MessageLookupByLibrary.simpleMessage("Or continue with"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "press_again_to_exit":
+            MessageLookupByLibrary.simpleMessage("Press again, to exit"),
         "privacy_policy":
             MessageLookupByLibrary.simpleMessage("Privacy Policy"),
         "processing": MessageLookupByLibrary.simpleMessage("Processing"),
@@ -175,6 +182,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "validator_this_field_is_required_gsm":
             MessageLookupByLibrary.simpleMessage("The GSM is required"),
         "welcome": m4,
-        "whoops": MessageLookupByLibrary.simpleMessage("Whoops!")
+        "whoops": MessageLookupByLibrary.simpleMessage("Whoops!"),
+        "whoops_info": MessageLookupByLibrary.simpleMessage("Whoops!!")
       };
 }

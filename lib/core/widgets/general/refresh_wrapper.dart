@@ -27,7 +27,7 @@ class RefreshWrapper extends StatefulWidget {
   final Function(RefreshControllerHandler controller)? onControllerInitiated;
 
   const RefreshWrapper({
-    Key? key,
+    super.key,
     required this.child,
     this.onRefresh,
     this.onLoading,
@@ -39,7 +39,7 @@ class RefreshWrapper extends StatefulWidget {
     this.physics,
     this.scrollDirection,
     this.onControllerInitiated,
-  }) : super(key: key);
+  });
 
   @override
   State<RefreshWrapper> createState() => _RefreshWrapperState();
@@ -331,10 +331,10 @@ class AppLoadingFooter extends LoadIndicator {
   final Duration completeDuration;
 
   const AppLoadingFooter({
-    Key? key,
-    VoidCallback? onClick,
-    LoadStyle loadStyle = LoadStyle.ShowAlways,
-    double height = 60.0,
+    super.key,
+    super.onClick,
+    super.loadStyle,
+    super.height,
     this.outerBuilder,
     this.textStyle = const TextStyle(color: Colors.grey),
     this.noMoreIcon,
@@ -345,12 +345,7 @@ class AppLoadingFooter extends LoadIndicator {
     this.loadingIcon,
     this.canLoadingIcon = const Icon(Icons.autorenew, color: Colors.grey),
     this.idleIcon = const Icon(Icons.arrow_upward, color: Colors.grey),
-  }) : super(
-          key: key,
-          loadStyle: loadStyle,
-          height: height,
-          onClick: onClick,
-        );
+  });
 
   @override
   State<StatefulWidget> createState() {

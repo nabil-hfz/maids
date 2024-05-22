@@ -43,9 +43,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "change_language": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
         "change_password":
             MessageLookupByLibrary.simpleMessage("تغيير كلمة المرور"),
-        "complete": MessageLookupByLibrary.simpleMessage("Complete"),
-        "complete_todo": MessageLookupByLibrary.simpleMessage("Complete Todo"),
-        "completed": MessageLookupByLibrary.simpleMessage("Completed"),
+        "complete": MessageLookupByLibrary.simpleMessage("إكمال"),
+        "complete_todo": MessageLookupByLibrary.simpleMessage("إكمال المهمة"),
+        "completed": MessageLookupByLibrary.simpleMessage("مكتمل"),
         "confirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
@@ -54,10 +54,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "current_password":
             MessageLookupByLibrary.simpleMessage("كلمة المرور الحالية"),
         "dark_mode": MessageLookupByLibrary.simpleMessage("الوضع الداكن"),
-        "delete": MessageLookupByLibrary.simpleMessage("Delete"),
-        "delete_todo": MessageLookupByLibrary.simpleMessage("Delete Todo"),
-        "deleting": MessageLookupByLibrary.simpleMessage("Deleting"),
-        "description": MessageLookupByLibrary.simpleMessage("description"),
+        "delete": MessageLookupByLibrary.simpleMessage("حذف"),
+        "delete_todo": MessageLookupByLibrary.simpleMessage("حذف المهمة"),
+        "deleting": MessageLookupByLibrary.simpleMessage("جاري الحذف"),
+        "description": MessageLookupByLibrary.simpleMessage("الوصف"),
         "dio_bad_request_error":
             MessageLookupByLibrary.simpleMessage("طلب سيء!"),
         "dio_cancel_error":
@@ -72,7 +72,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "dio_send_timeout_to_the_server": MessageLookupByLibrary.simpleMessage(
             "انتهت مهلة الإرسال في الاتصال مع خادم API"),
         "done": MessageLookupByLibrary.simpleMessage("تم"),
-        "edit": MessageLookupByLibrary.simpleMessage("Edit"),
+        "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
         "end_error_strings": MessageLookupByLibrary.simpleMessage(
             "========================================================"),
@@ -91,8 +91,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "err_not_valid_username_or_password":
             MessageLookupByLibrary.simpleMessage(
                 "اسم المستخدم أو كلمة المرور غير صالحة."),
-        "err_todo_with_this_id_not_found":
-            MessageLookupByLibrary.simpleMessage("Todo with this id not found"),
+        "err_todo_with_this_id_not_found": MessageLookupByLibrary.simpleMessage(
+            "لم يتم العثور على مهمة بهذا المعرف"),
         "error_internal_server":
             MessageLookupByLibrary.simpleMessage("خطأ في الخادم الداخلي"),
         "error_unexpected":
@@ -100,10 +100,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "home": MessageLookupByLibrary.simpleMessage("الصفحة الرئيسية"),
         "idle_loading_text":
             MessageLookupByLibrary.simpleMessage("تحرير للتحميل"),
-        "in_progress": MessageLookupByLibrary.simpleMessage("In progress"),
+        "in_progress": MessageLookupByLibrary.simpleMessage("قيد التنفيذ"),
         "language": MessageLookupByLibrary.simpleMessage("اللغة"),
         "languages": MessageLookupByLibrary.simpleMessage("اللغات"),
-        "light_mode": MessageLookupByLibrary.simpleMessage("Light mode"),
+        "light_mode": MessageLookupByLibrary.simpleMessage("وضع النهار"),
         "load_failed_text":
             MessageLookupByLibrary.simpleMessage("فشل في التحميل"),
         "loading_text": MessageLookupByLibrary.simpleMessage("جارٍ التحميل..."),
@@ -114,14 +114,21 @@ class MessageLookup extends MessageLookupByLibrary {
         "min_characters_count": m0,
         "more": MessageLookupByLibrary.simpleMessage("مزيد"),
         "new_account": MessageLookupByLibrary.simpleMessage("حساب جديد؟"),
+        "no_data_found_please_check_your_internet_connection":
+            MessageLookupByLibrary.simpleMessage(
+                "لم يتم العثور على بيانات. يرجى التحقق من اتصالك بالإنترنت"),
         "no_more_data_text":
             MessageLookupByLibrary.simpleMessage("لا توجد مزيد من البيانات"),
+        "no_result_found":
+            MessageLookupByLibrary.simpleMessage("لم يتم العثور على نتائج"),
         "notifications_settings":
             MessageLookupByLibrary.simpleMessage("إعدادات الإشعارات"),
         "optional": MessageLookupByLibrary.simpleMessage("خياري"),
         "or_continue_with":
             MessageLookupByLibrary.simpleMessage("أو استمر باستخدام"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+        "press_again_to_exit":
+            MessageLookupByLibrary.simpleMessage("اضغط مرة أخرى للخروج"),
         "privacy_policy":
             MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
         "processing": MessageLookupByLibrary.simpleMessage("جارٍ المعالجة"),
@@ -140,13 +147,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "================ بداية سلاسل الأخطاء ================="),
         "tap_again_to_eit":
             MessageLookupByLibrary.simpleMessage("اضغط مرة أخرى للخروج!"),
-        "todo": MessageLookupByLibrary.simpleMessage("Todo"),
-        "todos": MessageLookupByLibrary.simpleMessage("Todos"),
+        "todo": MessageLookupByLibrary.simpleMessage("مهمة"),
+        "todos": MessageLookupByLibrary.simpleMessage("جميع المهام"),
         "try_again": MessageLookupByLibrary.simpleMessage("حاول مرة أخرى"),
         "un_authorized_error":
             MessageLookupByLibrary.simpleMessage("خطأ غير مصرح به"),
         "unknown_error": MessageLookupByLibrary.simpleMessage("خطأ غير معروف"),
-        "updating": MessageLookupByLibrary.simpleMessage("Updating"),
+        "updating": MessageLookupByLibrary.simpleMessage("جاري التحديث"),
         "user_cancel_error":
             MessageLookupByLibrary.simpleMessage("تم الإلغاء بواسطة المستخدم"),
         "user_email": MessageLookupByLibrary.simpleMessage("بريد المستخدم"),
@@ -168,6 +175,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "validator_this_field_is_required_gsm":
             MessageLookupByLibrary.simpleMessage("GSM مطلوب"),
         "welcome": m4,
-        "whoops": MessageLookupByLibrary.simpleMessage("عفوًا!")
+        "whoops": MessageLookupByLibrary.simpleMessage("عفوًا!"),
+        "whoops_info": MessageLookupByLibrary.simpleMessage("عذراً!!")
       };
 }

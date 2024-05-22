@@ -1,11 +1,7 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 
-import 'package:provider/provider.dart';
-
-// Project imports:
 import 'package:maids/core/constants/constants.dart';
-// import 'package:maids/core/managers/managers.dart';
 
 class AppTitleHeader extends StatelessWidget {
   const AppTitleHeader({
@@ -13,6 +9,7 @@ class AppTitleHeader extends StatelessWidget {
     required this.title,
     this.style,
   });
+
   final String title;
   final TextStyle? style;
 

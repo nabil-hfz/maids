@@ -35,11 +35,6 @@ class _SplashPageState extends BaseAppState<SplashPage> {
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-  }
-
-  @override
   Widget build(BuildContext context) {
     double width = DeviceUtils.getScaledWidth(context, 1);
     double height = DeviceUtils.getScaledHeight(context, 1);
