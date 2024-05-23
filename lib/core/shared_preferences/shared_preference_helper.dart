@@ -12,14 +12,10 @@ import '../constants/constants.dart';
 
 @Singleton()
 class SharedPreferenceHelper {
-  // shared pref instance
   final SharedPreferences _sharedPreference;
   final FlutterSecureStorage _secureStorage;
 
-  // constructor
   SharedPreferenceHelper(this._sharedPreference, this._secureStorage);
-
-  // General Method ------------------------------------------------------------
 
   Future<bool> removeValue(String key) {
     return _sharedPreference.remove(key);

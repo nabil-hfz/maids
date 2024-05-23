@@ -44,15 +44,15 @@ class TodoLocalDataSource implements ITodoLocalDataSource {
       if (todos.hasDataOnly &&
           todos.data != null &&
           (todos.data!.todos?.isNotEmpty ?? false)) {
-        await db.writeTxn(() async {
+        return await db.writeTxn(() async {
           for (var todo in todos.data!.todos!) {
             await db.todoModels.put(todo);
           }
+          return true;
         });
       } else {
         return false;
       }
-      return true;
     });
   }
 
