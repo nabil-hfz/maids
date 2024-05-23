@@ -43,3 +43,7 @@ flutter clean && flutter pub get
 ```sh
 flutter run --dart-define=BASE_URL=https://dummyjson.com/
 ```
+- **Running the tests**:
+```sh
+flutter test
+```
